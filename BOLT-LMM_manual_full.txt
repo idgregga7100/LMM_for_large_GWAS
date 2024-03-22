@@ -1,0 +1,179 @@
+                      +-----------------------------+
+                      |                       ___   |
+                      |   BOLT-LMM, v2.4.1   /_ /   |
+                      |   November 16, 2022   /_/   |
+                      |   Po-Ru Loh            //   |
+                      |                        /    |
+                      +-----------------------------+
+
+Copyright (C) 2014-2022 Harvard University.
+Distributed under the GNU GPLv3 open source license.
+
+Compiled with USE_SSE: fast aligned memory access
+Compiled with USE_MKL: Intel Math Kernel Library linear algebra
+Boost version: 1_58
+
+Command line options:
+
+../BOLT-LMM_v2.4.1/bolt \
+    --helpFull 
+
+
+Options:
+
+Typical options:
+  -h [ --help ]                    print help message with typical options
+  --helpFull                       print help message with full option list
+  --bfile arg                      prefix of PLINK .fam, .bim, .bed files
+  --bfilegz arg                    prefix of PLINK .fam.gz, .bim.gz, .bed.gz 
+                                   files
+  --fam arg                        PLINK .fam file (note: file names ending in 
+                                   .gz are auto-[de]compressed)
+  --bim arg                        PLINK .bim file(s); for >1, use multiple 
+                                   --bim and/or {i:j}, e.g., data.chr{1:22}.bim
+  --bed arg                        PLINK .bed file(s); for >1, use multiple 
+                                   --bim and/or {i:j} expansion
+  --geneticMapFile arg             Oxford-format file for interpolating genetic
+                                   distances: tables/genetic_map_hg##.txt.gz
+  --remove arg                     file(s) listing individuals to ignore (no 
+                                   header; FID IID must be first two columns)
+  --exclude arg                    file(s) listing SNPs to ignore (no header; 
+                                   SNP ID must be first column)
+  --maxMissingPerSnp arg (=0.1)    QC filter: max missing rate per SNP
+  --maxMissingPerIndiv arg (=0.1)  QC filter: max missing rate per person
+  --phenoFile arg                  phenotype file (header required; FID IID 
+                                   must be first two columns)
+  --phenoCol arg                   phenotype column header
+  --phenoUseFam                    use last (6th) column of .fam file as 
+                                   phenotype
+  --covarFile arg                  covariate file (header required; FID IID 
+                                   must be first two columns)
+  --covarCol arg                   categorical covariate column(s); for >1, use
+                                   multiple --covarCol and/or {i:j} expansion
+  --qCovarCol arg                  quantitative covariate column(s); for >1, 
+                                   use multiple --qCovarCol and/or {i:j} 
+                                   expansion
+  --covarUseMissingIndic           include samples with missing covariates in 
+                                   analysis via missing indicator method 
+                                   (default: ignore such samples)
+  --reml                           run variance components analysis to 
+                                   precisely estimate heritability (but not 
+                                   compute assoc stats)
+  --lmm                            compute assoc stats under the inf model and 
+                                   with Bayesian non-inf prior (VB approx), if 
+                                   power gain expected
+  --lmmInfOnly                     compute mixed model assoc stats under the 
+                                   infinitesimal model
+  --lmmForceNonInf                 compute non-inf assoc stats even if BOLT-LMM
+                                   expects no power gain
+  --modelSnps arg                  file(s) listing SNPs to use in model (i.e., 
+                                   GRM) (default: use all non-excluded SNPs)
+  --LDscoresFile arg               LD Scores for calibration of Bayesian assoc 
+                                   stats: tables/LDSCORE.1000G_EUR.tab.gz
+  --numThreads arg (=1)            number of computational threads
+  --statsFile arg                  output file for assoc stats at PLINK 
+                                   genotypes
+  --dosageFile arg                 file(s) containing imputed SNP dosages to 
+                                   test for association (see manual for format)
+  --dosageFidIidFile arg           file listing FIDs and IIDs of samples in 
+                                   dosageFile(s), one line per sample
+  --statsFileDosageSnps arg        output file for assoc stats at dosage format
+                                   genotypes
+  --impute2FileList arg            list of [chr file] pairs containing IMPUTE2 
+                                   SNP probabilities to test for association
+  --impute2FidIidFile arg          file listing FIDs and IIDs of samples in 
+                                   IMPUTE2 files, one line per sample
+  --impute2MinMAF arg (=0)         MAF threshold on IMPUTE2 genotypes; 
+                                   lower-MAF SNPs will be ignored
+  --bgenFile arg                   file(s) containing Oxford BGEN-format 
+                                   genotypes to test for association
+  --sampleFile arg                 file containing Oxford sample file 
+                                   corresponding to BGEN file(s)
+  --bgenSampleFileList arg         list of [bgen sample] file pairs containing 
+                                   BGEN imputed variants to test for 
+                                   association
+  --bgenMinMAF arg (=0)            MAF threshold on Oxford BGEN-format 
+                                   genotypes; lower-MAF SNPs will be ignored
+  --bgenMinINFO arg (=0)           INFO threshold on Oxford BGEN-format 
+                                   genotypes; lower-INFO SNPs will be ignored
+  --statsFileBgenSnps arg          output file for assoc stats at BGEN-format 
+                                   genotypes
+  --statsFileImpute2Snps arg       output file for assoc stats at IMPUTE2 
+                                   format genotypes
+  --dosage2FileList arg            list of [map dosage] file pairs with 
+                                   2-dosage SNP probabilities (Ricopili/plink2 
+                                   --dosage format=2) to test for association
+  --statsFileDosage2Snps arg       output file for assoc stats at 2-dosage 
+                                   format genotypes
+
+Additional options:
+  --noMapCheck                     disable automatic check of genetic map scale
+  --noDosageIDcheck                disable automatic check of match between 
+                                   PLINK and dosage sample IDs
+  --noDosage2IDcheck               disable automatic check of match between 
+                                   PLINK and 2-dosage sample IDs
+  --noImpute2IDcheck               disable automatic check of match between 
+                                   PLINK and IMPUTE2 sample IDs
+  --noBgenIDcheck                  disable automatic check of match between 
+                                   PLINK and BGEN sample IDs
+  --maxModelSnps arg (=1000000)    an error-check: if millions of SNPs are 
+                                   imputed, it's inefficient to use them all
+  --covarMaxLevels arg (=10)       an error-check: maximum number of levels for
+                                   a categorical covariate
+  --numLeaveOutChunks arg (=-1)    # of SNP groups left out in turn to avoid 
+                                   proximal contamination (default: # chroms; 
+                                   LOCO analysis)
+  --numCalibSnps arg (=30)         # of random SNPs at which to compute 
+                                   denominator of prospective statistic for 
+                                   calibration
+  --h2gGuess arg (=0.25)           initial guess of h2g for LMM assoc
+  --h2EstMCtrials arg (=0)         number of MC trials to use when roughly 
+                                   estimating h2g for LMM assoc (0 = auto)
+  --reEstMCtrials arg (=0)         number of MC trials to use when 
+                                   re-estimating h2g for each LOCO rep (0 = no 
+                                   re-est)
+  --remlNoRefine                   compute faster (~2-3x) but slightly less 
+                                   accurate (~1.03x higher SE) REML variance 
+                                   parameter estimates
+  --remlGuessStr arg               initial variance parameter guesses (see 
+                                   manual for format) for REML optimization
+  --genWindow arg (=0.02)          genetic dist buffer (Morgans) to avoid 
+                                   proximal contamination if # MLMe leave-out 
+                                   groups > # chroms
+  --physWindow arg (=2000000)      physical dist buffer (bp) to avoid proximal 
+                                   contamination if # MLMe leave-out groups > #
+                                   chroms
+  --pEst arg (=-1)                 prior prob SNP effect is drawn from 
+                                   large-effect mixture component (default: est
+                                   via CV)
+  --varFrac2Est arg (=-1)          prior fraction of variance in small-effect 
+                                   mixture component (default: estimate via CV)
+  --CVfoldsSplit arg (=5)          cross-validation folds to split samples into
+                                   for mixture param estimation
+  --CVfoldsCompute arg (=0)        max cross-validation folds to actually 
+                                   compute: for large N, few are needed (0 = 
+                                   auto)
+  --CVnoEarlyExit                  run full CV (by default, CV exits once best 
+                                   param choice is statistically clear
+  --LDscoresCol arg (=LDSCORE)     column name of LD Scores to use in 
+                                   regression
+  --LDscoresUseChip                use LD Scores estimated among chip SNPs 
+                                   instead of reference panel
+  --LDscoresMatchBp                match SNPs to reference LD Scores based on 
+                                   (chr,bp) coordinates
+  --Nautosomes arg (=22)           number of autosomes for organism being 
+                                   studied
+  --CGtol arg (=5e-4)              tolerance for declaring convergence of 
+                                   conjugate gradient solver
+  --approxLLtol arg (=0.01)        tolerance for declaring convergence of 
+                                   variational Bayes
+  --maxIters arg (=500)            max number of iterations
+  --snpsPerBlock arg (=64)         working set of SNPs to process at once while
+                                   performing computations
+  --lmmBayesMCMC                   compute Bayesian mixed model assoc stats 
+                                   using MCMC
+  --MCMCiters arg (=0)             number of MCMC iterations to use (default: 
+                                   min(maxIters, 5*number of VB iters from CV))
+  --verboseStats                   output additional columns in statsFile
+  --predBetasFile arg              output file of betas for risk prediction
+
