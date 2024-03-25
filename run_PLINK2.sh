@@ -5,25 +5,25 @@
 
 #Define path to plink2 executable
 PLINK2_CMD="plink2"
+#prefix for our bed/bim/fam files
+INPUT_PREFIX="/home/igregga/LMM_files/simu-genos"
+#Phenotype file
+PHENO_FILE="/home/igregga/LMM_files/simu-cc-h2_0.2-prev0.1.phen"
 
-#Full path to the input files
-INPUT_DIR="/home/igregga/LMM_files"
-#Define the prefix for our input files
-INPUT_PREFIX="simu-genos"
+#Output files
+OUTPUT_DIR="/home/igregga/LMM_files/gwas_results"
+OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output"
 
-#Define the output directory and file prefix 
-OUTPUT_DIR="./plink2_results"
-OUTPUT_PREFIX="${OUTPUT_DIR}/analysis_output"
-
-#Create the output dir. if it doesn't already exist
+#Make sure output directory exists
 mkdir -p $OUTPUT_DIR
 
-#Calculate allele freq.
-$PLINK2_CMD --bfile $INPUT_PREFIX --freq --out ${OUTPUT_PREFIX}_freq
+#Run GWAS with plink2
+$PLINK2_CMD --bfile $INPUT_PREFIX \
+--pheno $PHENO_FILE \
+--pheno-col 3 \
+--glm 'omit-ref' \
+--maf 0.001 \
+--out $OUTPUT_PREFIX
 
-#Perform basic qc 
-#Remove individuals with missing genotype rate > 0.02 and variants
-# with a minor allele freq. < 0.05
-$PLINK2_CMD --bfile $INPUT_PREFIX --geno 0.02 --maf 0.05 --make-bed --out ${OUTPUT_PREFIX}
+echo "GWAS analysis complete."
 
-echo "plink2 analysis complete."
