@@ -9,4 +9,4 @@ fwrite(data.frame(subset1),'/home/igregga/LMM_files/2500_id_list.txt',col.names=
 
 #get random 1250
 subset2<-sample(fam$V2,1250,replace=F)
-fwrite(data.frame(subset1),'/home/igregga/LMM_files/1250_id_list.txt',col.names=F,quote=F,sep='\t')
+fwrite(data.frame(subset2),'/home/igregga/LMM_files/1250_id_list.txt',col.names=F,quote=F,sep='\t')
