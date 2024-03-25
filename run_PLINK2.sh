@@ -3,27 +3,36 @@
 # Script to run plink2
 #####
 
-#Define path to plink2 executable
-PLINK2_CMD="plink2"
-
-#Full path to the input files
+# Define path to plink2 executable
+# Directory with input files
 INPUT_DIR="/home/igregga/LMM_files"
-#Define the prefix for our input files
-INPUT_PREFIX="simu-genos"
+# Phenotype file
+PHENO_FILE="${INPUT_DIR}/simu-cc-h2_0.2-prev0.1.phen"
 
-#Define the output directory and file prefix 
-OUTPUT_DIR="./plink2_results"
-OUTPUT_PREFIX="${OUTPUT_DIR}/analysis_output"
+# Output files
+OUTPUT_DIR="${INPUT_DIR}/gwas_results"
 
-#Create the output dir. if it doesn't already exist
+# Make sure output directory exists
 mkdir -p $OUTPUT_DIR
 
-#Calculate allele freq.
-$PLINK2_CMD --bfile $INPUT_PREFIX --freq --out ${OUTPUT_PREFIX}_freq
+# Make an array of our subset prefixes
+declare -a subsets=("1250simu-genos" "2500simu-genos")  # Corrected the spelling of 'declare'
 
-#Perform basic qc 
-#Remove individuals with missing genotype rate > 0.02 and variants
-# with a minor allele freq. < 0.05
-$PLINK2_CMD --bfile $INPUT_PREFIX --geno 0.02 --maf 0.05 --make-bed --out ${OUTPUT_PREFIX}
+# Loop through subsets
+for subset in "${subsets[@]}"
+do  
+    # Full path to the input file set
+    INPUT_PREFIX="${INPUT_DIR}/${subset}"  # Corrected the variable name, it should be ${INPUT_DIR}, not {INPUT_DIR}
+    OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output_${subset}"
 
-echo "plink2 analysis complete."
+    # Run GWAS with plink2
+    plink2 --bfile $INPUT_PREFIX \
+    --pheno $PHENO_FILE \
+    --glm 'omit-ref' \  # Added backslash for line continuation
+    --maf 0.001 \
+    --out $OUTPUT_PREFIX
+
+    echo "PLINK2 GWAS analysis for subset ${subset} is complete."
+done
+
+echo "ALL GWAS analyses completed!"
