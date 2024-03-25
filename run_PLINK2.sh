@@ -16,7 +16,7 @@ OUTPUT_DIR="${INPUT_DIR}/gwas_results"
 mkdir -p $OUTPUT_DIR
 
 #Make an array of our subset prefixes
-declar -a subsets=("1250simu-genos" "2500simu-genos")
+declare -a subsets=("1250simu-genos" "2500simu-genos")
 
 #Loop through subsets
 for subset in "${subsets[@]}"
