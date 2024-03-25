@@ -3,8 +3,6 @@
 # Script to run plink2
 #####
 
-#Define path to plink2 executable
-PLINK2_CMD="plink2"
 #Directory with input files
 INPUT_DIR="/home/igregga/LMM_files"
 #Phenotype file
