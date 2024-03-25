@@ -25,5 +25,5 @@ $PLINK2_CMD --bfile $INPUT_PREFIX \
 --maf 0.001 \
 --out $OUTPUT_PREFIX
 
-echo "GWAS analysis complete."
+echo "GWAS analysis complete!"
 
