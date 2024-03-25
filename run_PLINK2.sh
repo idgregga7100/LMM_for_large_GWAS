@@ -5,25 +5,37 @@
 
 #Define path to plink2 executable
 PLINK2_CMD="plink2"
-#prefix for our bed/bim/fam files
-INPUT_PREFIX="/home/igregga/LMM_files/simu-genos"
+#Directory with input files
+INPUT_DIR="/home/igregga/LMM_files"
 #Phenotype file
-PHENO_FILE="/home/igregga/LMM_files/simu-cc-h2_0.2-prev0.1.phen"
+PHENO_FILE="${INPUT_DIR}/simu-cc-h2_0.2-prev0.1.phen"
 
 #Output files
-OUTPUT_DIR="/home/igregga/LMM_files/gwas_results"
-OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output"
+OUTPUT_DIR="${INPUT_DIR}/gwas_results"
+
 
 #Make sure output directory exists
 mkdir -p $OUTPUT_DIR
 
-#Run GWAS with plink2
-$PLINK2_CMD --bfile $INPUT_PREFIX \
---pheno $PHENO_FILE \
---pheno-col 3 \
---glm 'omit-ref' \
---maf 0.001 \
---out $OUTPUT_PREFIX
+#Make an array of our subset prefixes
+declar -a subsets=("1250simu-genos" "2500simu-genos")
 
-echo "GWAS analysis complete!"
+#Loop through subsets
+for subset in "${subsets[@]}"
+do  
+    #full path to the iunput file set
+    INPUT_PREFIX="{INPUT_DIR}/${subset}"
+    OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output_${subset}"
+
+    #Run GWAS with plink2
+    plink2 --bfile $INPUT_PREFIX \
+    --pheno $PHENO_FILE \
+    --glm 'omit-ref'
+    --maf 0.001 \
+    --out $OUTPUT_PREFIX
+
+    echo "PLINK2 GWAS analysis for subset ${subset} is complete."
+done
+
+echo "All GWAS analsyes completed!"
 
