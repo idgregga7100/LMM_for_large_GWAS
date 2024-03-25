@@ -2,20 +2,24 @@
 #ACTIVATE CONDA ENV FIRST
 conda activate regenie_env
 
+#need to loop through sample sizes, again phenos need different commands
+for f in 1250 2500 5000
+do
 #run regenie step 1
 ./regenie --step 1 \
---bed /home/igregga/LMM_files/5000simu-gwas \
+--bed /home/igregga/LMM_files/${f}simu-gwas \
 --phenoFile /home/igregga/LMM_files/phenos/simu_continuous.phen \
 --bsize 100 \
---out /home/igregga/regenie-out/continuous-fit
+--out /home/igregga/regenie-out/${f}continuous-fit
 
 #run regenie step 2
 ./regenie --step 2 \
---bed /home/igregga/LMM_files/5000simu-gwas \
---pred /home/igregga/regenie-out/continuous-fit_pred.list \
+--bed /home/igregga/LMM_files/${f}simu-gwas \
+--pred /home/igregga/regenie-out/${f}continuous-fit_pred.list \
 --phenoFile /home/igregga/LMM_files/phenos/simu_continuous.phen \
 --bsize 100 \
---out /home/igregga/regenie-out/continuous-test
+--out /home/igregga/regenie-out/${f}continuous-test
+done
 
 conda deactivate
 
