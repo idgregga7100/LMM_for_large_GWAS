@@ -44,6 +44,7 @@ do
         --LDscoresMatchBp \
         --LDscoresFile=$cwd/../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
         --statsFile=$cwd/BOLT_results/${f%.bed}_cc_stats.tab;
+    echo "BOLT-LMM for subset ${f%.bed} cc is complete."
 done
 
 # command to compute for qt (continuous), including time and memory for benchmarking
@@ -59,6 +60,7 @@ do
         --LDscoresMatchBp \
         --LDscoresFile=$cwd/../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
         --statsFile=$cwd/BOLT_results/${f%.bed}_qt_stats.tab;
+    echo "BOLT-LMM for subset ${f%.bed} qt is complete."
 done
 
 # --lmm: default BOLT-LMM analysis
