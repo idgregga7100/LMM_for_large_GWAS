@@ -20,10 +20,10 @@ fi
 cwd=$(pwd)
 #path to bed/bim/fam directory: /home/igregga/LMM_files/
 geno_dir=/home/igregga/LMM_files
-#path to cc phenotypes: /home/data/simulated_gwas/simu-cc-h2_0.2-prev0.1.phen 
-cc_pheno=/home/data/simulated_gwas/simu-cc-h2_0.2-prev0.1.phen
-#path to qt phenotypes: /home/data/simulated_gwas/simu-qt-h2_0.2.phen 
-qt_pheno=/home/data/simulated_gwas/simu-qt-h2_0.2.phen 
+#path to cc phenotypes (with header row containing FID and IID!)
+cc_pheno=/home/igregga/LMM_files/phenos/simu_categorical.phen 
+#path to qt phenotypes (with header row containing FID and IID!)
+qt_pheno=/home/igregga/LMM_files/phenos/simu_continuous.phen 
 
 # base command
 # ./bolt --bfile=geno --phenoFile=pheno.txt --phenoCol=phenoName --lmm --LDscoresFile=tables/LDSCORE.1000G_EUR.tab.gz --statsFile=stats.tab
@@ -31,15 +31,37 @@ qt_pheno=/home/data/simulated_gwas/simu-qt-h2_0.2.phen
 # change to directory with input genotype files
 cd $geno_dir
 
-# command to compute cc
+# command to compute for cc (categorical), including time and memory for benchmarking
 for f in *simu-genos.bed;
 do
-    $cwd/../BOLT-LMM_v2.4.1/bolt \
+    time /usr/bin/time --verbose $cwd/../BOLT-LMM_v2.4.1/bolt \
         --bfile=${f%.bed} \
         --phenoFile=$cc_pheno \
-        --phenoCol=3 \
+        --phenoCol=TRAIT \
         --numThreads=2 \
         --lmm \
+        --maxModelSnps=2000000 \
+        --LDscoresMatchBp \
         --LDscoresFile=$cwd/../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
         --statsFile=$cwd/BOLT_results/${f%.bed}_cc_stats.tab;
 done
+
+# command to compute for qt (continuous), including time and memory for benchmarking
+for f in *simu-genos.bed;
+do
+    time /usr/bin/time --verbose $cwd/../BOLT-LMM_v2.4.1/bolt \
+        --bfile=${f%.bed} \
+        --phenoFile=$qt_pheno \
+        --phenoCol=TRAIT \
+        --numThreads=2 \
+        --lmm \
+        --maxModelSnps=2000000 \
+        --LDscoresMatchBp \
+        --LDscoresFile=$cwd/../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
+        --statsFile=$cwd/BOLT_results/${f%.bed}_qt_stats.tab;
+done
+
+# --lmm: default BOLT-LMM analysis
+# --maxModelSnps: maximum SNPs allowed; changed from default of 1000000
+# --LDscoresMatchBp: used when bim file does not contain rsIDs, allows matching by base pair coordinate instead; in conjuction with --LDscoresFile
+# --LDscoresFile: reference LD scores needed to calibrate BOLT-LMM statistic
