@@ -26,7 +26,7 @@ do
     OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output_${subset}"
 
     # Run GWAS with plink2
-    /home/wprice/plink2 --bfile "$INPUT_PREFIX" \
+    plink2 --bfile "$INPUT_PREFIX" \
        --pheno "$PHENO_FILE" \
        --glm 'omit-ref' \
        --maf 0.001 \
