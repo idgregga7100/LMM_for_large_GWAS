@@ -5,13 +5,16 @@
 
 for f in 1250 2500 5000
 do
-/home/igregga/SUGEN-master/SUGEN \
+
+time /usr/bin/time --verbose /home/igregga/SUGEN-master/SUGEN \
 --pheno /home/igregga/LMM_files/phenos/simu_continuous.phen \
---formula "trait=" \
+--formula "TRAIT=" \
 --unweighted \
 --vcf /home/igregga/LMM_files/vcfs/${f}simu-genos.vcf \
 --model linear \
 --out-prefix /home/igregga/sugen-out/continuous_${f}
+
 done
 
 #this should be essentially their default linear association, if i understand their documentation
+#to run: nohup /home/igregga/LMM_for_large_GWAS/run_SUGEN.sh > /home/igregga/sugen-out/sugencont.log &
