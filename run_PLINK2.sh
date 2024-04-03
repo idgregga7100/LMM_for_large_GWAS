@@ -10,7 +10,7 @@ INPUT_DIR="/home/igregga/LMM_files"
 PHENO_FILE="${INPUT_DIR}/simu-cc-h2_0.2-prev0.1.phen"
 
 # Output files
-OUTPUT_DIR="${INPUT_DIR}/gwas_results"
+OUTPUT_DIR="$/home/wprice2/gwas_results"
 
 # Make sure output directory exists
 mkdir -p $OUTPUT_DIR
@@ -26,11 +26,11 @@ do
     OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output_${subset}"
 
     # Run GWAS with plink2
-    plink2 --bfile $INPUT_PREFIX \
-    --pheno $PHENO_FILE \
-    --glm 'omit-ref' \  # Added backslash for line continuation
-    --maf 0.001 \
-    --out $OUTPUT_PREFIX
+    /home/wprice/plink2 --bfile "$INPUT_PREFIX" \
+       --pheno "$PHENO_FILE" \
+       --glm 'omit-ref' \
+       --maf 0.001 \
+       --out "$OUTPUT_PREFIX"
 
     echo "PLINK2 GWAS analysis for subset ${subset} is complete."
 done
