@@ -11,7 +11,8 @@ time /usr/bin/time --verbose regenie --step 1 \
 --phenoFile /home/igregga/LMM_files/phenos/simu_continuous.phen \
 --bsize 100 \
 --out /home/igregga/regenie-out/${f}continuous-fit \
---force-step1
+--force-step1 \
+--threads 2
 
 #run regenie step 2
 time /usr/bin/time --verbose regenie --step 2 \
@@ -19,7 +20,8 @@ time /usr/bin/time --verbose regenie --step 2 \
 --pred /home/igregga/regenie-out/${f}continuous-fit_pred.list \
 --phenoFile /home/igregga/LMM_files/phenos/simu_continuous.phen \
 --bsize 100 \
---out /home/igregga/regenie-out/${f}continuous-test
+--out /home/igregga/regenie-out/${f}continuous-test \
+--threads 2
 done
 
 #conda deactivate
