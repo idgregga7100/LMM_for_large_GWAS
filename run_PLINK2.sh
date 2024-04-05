@@ -7,7 +7,7 @@
 # Directory with input files
 INPUT_DIR="/home/igregga/LMM_files"
 # Phenotype file
-PHENO_FILE="${INPUT_DIR}/simu-cc-h2_0.2-prev0.1.phen"
+PHENO_FILE="${INPUT_DIR}/phenos/simu_continuous.phen"
 
 # Output files
 OUTPUT_DIR="$/home/wprice2/gwas_results"
@@ -26,11 +26,7 @@ do
     OUTPUT_PREFIX="${OUTPUT_DIR}/gwas_output_${subset}"
 
     # Run GWAS with plink2
-    plink2 --bfile "$INPUT_PREFIX" \
-       --pheno "$PHENO_FILE" \
-       --glm 'omit-ref' \
-       --maf 0.001 \
-       --out "$OUTPUT_PREFIX"
+    /home/wprice2/plink2 --bfile "${INPUT_PREFIX}" --pheno "$PHENO_FILE" --glm omit-ref allow-no-covars --maf 0.001 --out "$OUTPUT_PREFIX"
 
     echo "PLINK2 GWAS analysis for subset ${subset} is complete."
 done
