@@ -3,7 +3,14 @@ COMP383/483 project
 
 ## LMM Tools and PLINK2 Installation
 
-## Preprocessing
+The following tools (and any necessary dependencies) were installed according to each tool's Wiki page.
+* BOLT-LMM
+* SAIGE
+* SUGEN
+* REGENIE
+* PLINK2
+
+## Preprocessing & File Preparation
 
 path to subsetted plink files: 
 ```
