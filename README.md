@@ -100,6 +100,14 @@ SUGEN has a weird error. See wiki page.
 
 ### REGENIE
 
-REGENIE like SAIGE also takes two steps, both wrapped in run_REGENIE.sh and run_REGENIE-binary.sh (one for continuous pheno, one categorical/binary pheno).
+REGENIE like SAIGE also takes two steps, both wrapped in run_REGENIE.sh and run_REGENIE-binary.sh (one for continuous pheno, one categorical/binary pheno). Run with:
+```
+nohup /home/igregga/LMM_for_large_GWAS/run_REGENIE.sh > /home/igregga/regenie-out/regeniecont.log &
+nohup /home/igregga/LMM_for_large_GWAS/run_REGENIE-binary.sh > /home/igregga/regenie-out/regeniecat.log &
+```
+Tool generates multiple log files for each run, and prints much of this info to command line (so it's a very long nohup log). The actual results are:
+```
+/home/igregga/regenie-out/*.regenie
+```
 
 ### PLINK2
