@@ -31,6 +31,7 @@ For benchmark runs, each tool was set to use 2 threads where possible. Time was 
 ```
 time /usr/bin/time --verbose <tool command>
 ```
+This was incorporated into each of the tool-specific shell scripts detailed below.
 
 ### BOLT-LMM
 
