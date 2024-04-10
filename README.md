@@ -7,3 +7,8 @@ path to subsetted plink files:
 #test if you can read them
 head /home/igregga/LMM_files/*simu-genos.bim
 ```
+
+header added to pheno files using cat on the command line
+```
+/home/igregga/LMM_files/phenos/
+```
