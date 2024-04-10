@@ -67,3 +67,5 @@ done
 # --maxModelSnps: maximum SNPs allowed; changed from default of 1000000
 # --LDscoresMatchBp: used when bim file does not contain rsIDs, allows matching by base pair coordinate instead; in conjuction with --LDscoresFile
 # --LDscoresFile: reference LD scores needed to calibrate BOLT-LMM statistic
+
+#to run: nohup bash run_BOLT.sh > nohup_BOLT.out &
