@@ -37,7 +37,18 @@ nohup bash run_BOLT.sh > nohup_BOLT.out &
 ```
 Location of results files:
 ```
+# final BOLT output for continous trait:
+/home/tfischer1/LMM_for_large_GWAS/BOLT_results/1250simu-genos_qt_stats.tab 
+/home/tfischer1/LMM_for_large_GWAS/BOLT_results/2500simu-genos_qt_stats.tab
+/home/tfischer1/LMM_for_large_GWAS/BOLT_results/5000simu-genos_qt_stats.tab
 
+# final output for categorical:
+/home/tfischer1/LMM_for_large_GWAS/BOLT_results/1250simu-genos_cc_stats.tab
+/home/tfischer1/LMM_for_large_GWAS/BOLT_results/2500simu-genos_cc_stats.tab
+/home/tfischer1/LMM_for_large_GWAS/BOLT_results/5000simu-genos_cc_stats.tab
+
+# log file:
+/home/tfischer1/LMM_for_large_GWAS/nohup_BOLT.out 
 ```
 
 ### SAIGE
@@ -52,7 +63,16 @@ nohup bash run_SAIGE.sh > nohup_SAIGE.out &
 ```
 Location of results files:
 ```
+# final SAIGE output for continous trait:
+/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/1250_qt_fullGRM_with_vr.txt
+/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/2500_qt_fullGRM_with_vr.txt
 
+# still running...
+
+# for categorical trait:
+
+# log file:
+/home/tfischer1/LMM_for_large_GWAS/nohup_SAIGE.out  
 ```
 
 ### SUGEN
