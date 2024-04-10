@@ -27,6 +27,11 @@ header added to pheno files using cat on the command line
 
 *Note: all commands can be run from inside the `LMM_for_large_GWAS` repo directory.??*
 
+For benchmark runs, each tool was set to use 2 threads where possible. Time was measured using the `time` command and memory usage by `/usr/bin/time --verbose`, which logs the maximum resident set size. The general command format:
+```
+time /usr/bin/time --verbose <tool command>
+```
+
 ### BOLT-LMM
 
 The script to run BOLT, `run_BOLT.sh`, first completes a GWAS for the continous trait (looping through each of the subsets) and then completes a GWAS for the categorical trait. 
