@@ -42,6 +42,19 @@ Location of results files:
 
 ### SAIGE
 
+SAIGE requires two steps for each GWAS run. The first step fits a null model. We used a full GRM (Genetic Relationship Matrix). The second step performs a single-variant association test.
+
+The benchmark script for SAIGE, `run_SAIGE.sh`, first completes the two-step GWAS for the continous trait (looping through the subset sizes) and then does the same for the categorical trait. Note that time and memory are measured separately for step 1 and step 2 of each run.
+
+Command to run:
+```
+nohup bash run_SAIGE.sh > nohup_SAIGE.out &
+```
+Location of results files:
+```
+
+```
+
 ### SUGEN
 
 ### REGENIE
