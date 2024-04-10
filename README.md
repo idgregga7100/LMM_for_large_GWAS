@@ -6,7 +6,7 @@ COMP383/483 project
 The following tools (and any necessary dependencies) were installed according to each tool's Wiki page (in this repo).
 * BOLT-LMM
 * SAIGE
-* SUGEN
+* SUGEN (so far not entirely functional?)
 * REGENIE
 * PLINK2
 
@@ -28,6 +28,8 @@ header added to pheno files using cat on the command line
 *Note: all commands can be run from inside the `LMM_for_large_GWAS` repo directory.??*
 
 ### BOLT-LMM
+
+The script to run BOLT, `run_BOLT.sh`, first completes a GWAS for the continous trait (looping through each of the subsets) and then completes a GWAS for the categorical trait. 
 
 Command to run:
 ```
