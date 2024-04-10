@@ -3,7 +3,7 @@ COMP383/483 project
 
 ## LMM Tools and PLINK2 Installation
 
-The following tools (and any necessary dependencies) were installed according to each tool's Wiki page.
+The following tools (and any necessary dependencies) were installed according to each tool's Wiki page (in this repo).
 * BOLT-LMM
 * SAIGE
 * SUGEN
@@ -25,7 +25,18 @@ header added to pheno files using cat on the command line
 ```
 ## Benchmark Runs
 
+*Note: all commands can be run from inside the `LMM_for_large_GWAS` repo directory.??*
+
 ### BOLT-LMM
+
+Command to run:
+```
+nohup bash run_BOLT.sh > nohup_BOLT.out &
+```
+Location of results files:
+```
+
+```
 
 ### SAIGE
 
