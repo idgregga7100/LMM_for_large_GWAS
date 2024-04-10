@@ -85,10 +85,10 @@ Location of results files:
 # final SAIGE output for continous trait:
 /home/tfischer1/LMM_for_large_GWAS/SAIGE_results/1250_qt_fullGRM_with_vr.txt
 /home/tfischer1/LMM_for_large_GWAS/SAIGE_results/2500_qt_fullGRM_with_vr.txt
-
-# still running...
+/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_qt_fullGRM_with_vr.txt
 
 # for categorical trait:
+# still running...
 
 # log file:
 /home/tfischer1/LMM_for_large_GWAS/nohup_SAIGE.out  
