@@ -88,7 +88,9 @@ Location of results files:
 /home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_qt_fullGRM_with_vr.txt
 
 # for categorical trait:
-# still running...
+/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/1250_cc_fullGRM_with_vr.txt
+/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/2500_cc_fullGRM_with_vr.txt
+/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_cc_fullGRM_with_vr.txt
 
 # log file:
 /home/tfischer1/LMM_for_large_GWAS/nohup_SAIGE.out  
