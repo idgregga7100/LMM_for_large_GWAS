@@ -17,7 +17,7 @@ reg<-fread('/home/igregga/regenie-out/5000continuous-test_TRAIT.regenie')
 
 merged<-left_join(real,reg,by=c('QTL'='ID'))
 
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #regenie categorical
 realcc<-fread('/home/data/simulated_gwas/simu-cc-h2_0.2-prev0.1.par')
@@ -25,38 +25,40 @@ reg<-fread('/home/igregga/regenie-out/5000categorical-test_TRAIT.regenie')
 
 merged<-left_join(real,reg,by=c('QTL'='ID'))
 
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #bolt continuous
 bolt<-fread('/home/tfischer1/LMM_for_large_GWAS/BOLT_results/5000simu-genos_qt_stats.tab')
 
 merged<-left_join(realqt,bolt,by=c('QTL'='SNP'))
 
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #bolt categorical
 bolt<-fread('/home/tfischer1/LMM_for_large_GWAS/BOLT_results/5000simu-genos_cc_stats.tab')
 
 merged<-left_join(realcc,bolt,by=c('QTL'='SNP'))
 
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #saige continuous
 saige<-fread('/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_qt_fullGRM_with_vr.txt')
 merged<-left_join(realqt,saige,by=c('QTL'='MarkerID'))
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #saige categorical
 saige<-fread('/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_cc_fullGRM_with_vr.txt')
 merged<-left_join(realcc,saige,by=c('QTL'='MarkerID'))
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #plink continuous
 plink<-fread('/home/wprice2/gwas_results/5000continuous.TRAIT.glm.linear')
 merged<-left_join(realqt,plink,by=c('QTL'='ID'))
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
 
 #plink categorical
 plink<-fread('/home/wprice2/gwas_results/5000categorical.TRAIT.glm.logistic.hybrid')
 merged<-left_join(realcc,plink,by=c('QTL'='ID'))
-ggplot(merged,aes(x=Effect,y=BETA))+geom_point()
+#need to calc beta
+merged<-mutate(merged,BETA=log(OR))
+ggplot(merged,aes(x=Effect,y=BETA))+geom_point()+geom_abline(slope=1,intercept=0,color='red')
