@@ -120,3 +120,10 @@ The command to run the plink2 script is:
 nohup bash run_PLINK2.sh > PLINK2.out &
 ```
 Location of results files, including the log file, can all be found in the same directory: `/home/wprice2/gwas_results`.
+
+## Analysis
+
+True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. We filtered these down to remove any beta values less than abs val of 1, which leaves 3105 'causal' SNPs for the categorical trait and 3115 'causal' SNPs for the continuous trait. These filtered files are located:
+```
+/home/igregga/LMM_files/phenos/simu-*_filtered.par
+```
