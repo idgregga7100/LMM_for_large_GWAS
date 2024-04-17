@@ -21,7 +21,14 @@ plinkcc<-mutate(plinkcc,BETA=log(OR))
 #regenie continuous
 reg<-fread('/home/igregga/regenie-out/5000continuous-test_TRAIT.regenie')
 merged<-left_join(plinkqt,reg,by=c('ID'='ID'))
-ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_abline(slope=1,intercept=0,color='red')+geom_smooth()+theme_gray(base_size=18)
+r <- cor(merged$BETA.x, merged$BETA.y, method='pearson')
+r <- as.character(round(r, digits=2))
+ggplot(merged,aes(x=BETA.x,y=BETA.y))+
+  geom_point()+
+  geom_abline(slope=1,intercept=0,color='red')+
+  geom_smooth(method='lm')+
+  theme_gray(base_size=18)+
+  theme(legend.text=r)
 ```
 ```{r}
 #regenie categorical
