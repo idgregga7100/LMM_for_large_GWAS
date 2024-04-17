@@ -21,42 +21,51 @@ plinkcc<-mutate(plinkcc,BETA=log(OR))
 #regenie continuous
 reg<-fread('/home/igregga/regenie-out/5000continuous-test_TRAIT.regenie')
 merged<-left_join(plinkqt,reg,by=c('ID'='ID'))
-r <- cor(merged$BETA.x, merged$BETA.y, method='pearson')
-r <- as.character(round(r, digits=2))
+r2 <- (cor(merged$BETA.x, merged$BETA.y, method='pearson'))^2
+r2 <- as.character(round(r2, digits=2))
 ggplot(merged,aes(x=BETA.x,y=BETA.y))+
   geom_point()+
-  geom_abline(slope=1,intercept=0,color='red')+
   geom_smooth(method='lm')+
   theme_gray(base_size=18)+
-  theme(legend.text=r)
+  geom_text(x=-60,y=40,label=paste('R2=',r2),color='blue',size=6)
 ```
 ```{r}
 #regenie categorical
 reg<-fread('/home/igregga/regenie-out/5000categorical-test_TRAIT.regenie')
 merged<-left_join(plinkcc,reg,by=c('ID'='ID'))
-ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_abline(slope=1,intercept=0,color='red')+geom_smooth()+theme_gray(base_size=18)
+r2 <- (cor(merged$BETA.x, merged$BETA.y, method='pearson'))^2
+r2 <- as.character(round(r2, digits=2))
+ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_smooth(method='lm')+theme_gray(base_size=18)+geom_text(x=-.75,y=.75,label=paste('R2=',r2),color='blue',size=6)
 ```
 ```{r}
 #bolt continuous
 bolt<-fread('/home/tfischer1/LMM_for_large_GWAS/BOLT_results/5000simu-genos_qt_stats.tab')
 merged<-left_join(plinkqt,bolt,by=c('ID'='SNP'))
-ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_abline(slope=1,intercept=0,color='red')+geom_smooth()+theme_gray(base_size=18)
+r2 <- (cor(merged$BETA.x, merged$BETA.y, method='pearson'))^2
+r2 <- as.character(round(r2, digits=2))
+ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_smooth(method='lm')+theme_gray(base_size=18)+geom_text(x=-60,y=40,label=paste('R2=',r2),color='blue',size=6)
 ```
 ```{r}
 #bolt categorical
 bolt<-fread('/home/tfischer1/LMM_for_large_GWAS/BOLT_results/5000simu-genos_cc_stats.tab')
 merged<-left_join(plinkcc,bolt,by=c('ID'='SNP'))
-ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_abline(slope=1,intercept=0,color='red')+geom_smooth()+theme_gray(base_size=18)
+r2 <- (cor(merged$BETA.x, merged$BETA.y, method='pearson'))^2
+r2 <- as.character(round(r2, digits=2))
+ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_smooth(method='lm')+theme_gray(base_size=18)+geom_text(x=-.75,y=.1,label=paste('R2=',r2),color='blue',size=6)
 ```
 ```{r}
 #saige continuous
 saige<-fread('/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_qt_fullGRM_with_vr.txt')
 merged<-left_join(plinkqt,saige,by=c('ID'='MarkerID'))
-ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_abline(slope=1,intercept=0,color='red')+geom_smooth()+theme_gray(base_size=18)
+r2 <- (cor(merged$BETA.x, merged$BETA.y, method='pearson'))^2
+r2 <- as.character(round(r2, digits=2))
+ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_smooth(method='lm')+theme_gray(base_size=18)+geom_text(x=-60,y=.2,label=paste('R2=',r2),color='blue',size=6)
 ```
 ```{r}
 #saige categorical
 saige<-fread('/home/tfischer1/LMM_for_large_GWAS/SAIGE_results/5000_cc_fullGRM_with_vr.txt')
 merged<-left_join(plinkcc,saige,by=c('ID'='MarkerID'))
-ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_abline(slope=1,intercept=0,color='red')+geom_smooth()+theme_gray(base_size=18)
+r2 <- (cor(merged$BETA.x, merged$BETA.y, method='pearson'))^2
+r2 <- as.character(round(r2, digits=2))
+ggplot(merged,aes(x=BETA.x,y=BETA.y))+geom_point()+geom_smooth(method='lm')+theme_gray(base_size=18)+geom_text(x=-.75,y=.5,label=paste('R2=',r2),color='blue',size=6)
 ```
