@@ -17,6 +17,7 @@ cont_data <- data.frame(
 cat_data$runtime <- cat_data$runtime / 3600
 cont_data$runtime <- cont_data$runtime / 3600
 
+
 # Combine the data
 data <- rbind(cat_data, cont_data)
 
