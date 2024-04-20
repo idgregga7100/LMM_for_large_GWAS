@@ -13,6 +13,9 @@ cont_memory <- data.frame(
   Software = rep(c("BOLT-LMM", "REGENIE", "SAIGE"), each = 3),
   Type = rep("Continuous", 9)
 )
+#Convert from kb to gb
+cat_memory$memory <- cat_memory$memory / 1e6
+cont_memory$memory <- cont_memory$memory / 1e6
 
 # Combine the data
 data <- rbind(cat_memory, cont_memory)
@@ -26,5 +29,5 @@ ggplot(data, aes(x = nIndividuals, y = memory, color = Software, group = interac
   geom_point() + 
   scale_color_manual(values = c("BOLT-LMM" = "green", "REGENIE" = "blue", "SAIGE" = "red")) + 
   theme_minimal() + 
-  labs(x = "# Individuals", y = "Memory (kbytes)", title = "LMM Memory Use by Type") + 
+  labs(x = "# Individuals", y = "Memory (Gbytes)", title = "LMM Memory Use by Type") + 
   scale_linetype_manual(values = c("Categorical" = "solid", "Continuous" = "dashed"))
