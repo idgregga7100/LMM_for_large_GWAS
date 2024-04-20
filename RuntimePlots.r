@@ -13,6 +13,10 @@ cont_data <- data.frame(
   Software = rep(c("BOLT-LMM", "REGENIE", "SAIGE"), each = 3),
   Type = rep("Continuous", 9)
 )
+#Convert y axis from seconds to hours
+cat_data$runtime <- cat_data$runtime / 3600
+cont_data$runtime <- cont_data$runtime / 3600
+
 
 # Combine the data
 data <- rbind(cat_data, cont_data)
@@ -26,5 +30,5 @@ ggplot(data, aes(x = nIndividuals, y = runtime, color = Software, group = intera
   geom_point() + 
   scale_color_manual(values = c("BOLT-LMM" = "green", "REGENIE" = "blue", "SAIGE" = "red")) + 
   theme_minimal() + 
-  labs(x = "# Individuals", y = "Runtime (s)", title = "LMM Runtime by Type") + 
+  labs(x = "# Individuals", y = "Runtime (hours)", title = "LMM Runtime by Type") + 
   scale_linetype_manual(values = c("Categorical" = "solid", "Continuous" = "dashed"))
