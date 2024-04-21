@@ -140,9 +140,9 @@ True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. 
 **Notes**: There is a reason why plink is the industry standard!
 
 ### BOLT-LMM
-**Installation & Accessibility**: 
+**Installation & Accessibility**: 4/5
 
-**Usability**:
+**Usability**: 
 
 **Overall**:
 
