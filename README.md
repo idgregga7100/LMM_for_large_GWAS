@@ -132,8 +132,11 @@ True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. 
 
 ### PLINK2.0
 **Installation & Accessibility**: 5/5
+
 **Usability**: 5/5
+
 **Overall**: 5/5
+
 **Notes**: There is a reason why plink is the industry standard!
 
 ### BOLT-LMM
