@@ -127,3 +127,36 @@ True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. 
 ```
 /home/igregga/LMM_files/phenos/simu-*_filtered.par
 ```
+
+## Usability Ratings
+
+### PLINK2.0
+**Installation & Accessibility**: 5/5
+**Usability**: 5/5
+**Overall**: 5/5
+**Notes**: There is a reason why plink is the industry standard!
+
+### BOLT-LMM
+**Installation & Accessibility**: 
+**Usability**:
+**Overall**:
+**Notes**:
+
+### SAIGE
+**Installation & Accessibility**: 
+**Usability**:
+**Overall**:
+**Notes**:
+
+### REGENIE
+**Installation & Accessibility**: 
+**Usability**:
+**Overall**:
+**Notes**:
+
+### SUGEN
+**Installation & Accessibility**: 
+**Usability**:
+**Overall**:
+**Notes**:
+
