@@ -141,25 +141,37 @@ True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. 
 
 ### BOLT-LMM
 **Installation & Accessibility**: 
+
 **Usability**:
+
 **Overall**:
+
 **Notes**:
 
 ### SAIGE
 **Installation & Accessibility**: 
+
 **Usability**:
+
 **Overall**:
+
 **Notes**:
 
 ### REGENIE
 **Installation & Accessibility**: 
+
 **Usability**:
+
 **Overall**:
+
 **Notes**:
 
 ### SUGEN
 **Installation & Accessibility**: 
+
 **Usability**:
+
 **Overall**:
+
 **Notes**:
 
