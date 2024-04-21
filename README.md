@@ -131,7 +131,7 @@ True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. 
 ## Usability Ratings
 
 ### PLINK2.0
-**Installation & Accessibility**: <code style="color : green">5/5</code>
+**Installation & Accessibility**: 5/5
 
 **Usability**: 5/5
 
