@@ -30,4 +30,11 @@ ggplot(data, aes(x = nIndividuals, y = memory, color = Software, group = interac
   scale_color_manual(values = c("BOLT-LMM" = "green", "REGENIE" = "blue", "SAIGE" = "red", "PLINK2" = "purple")) + 
   theme_minimal() + 
   labs(x = "# Individuals", y = "Memory (Gbytes)", title = "LMM Memory Use by Type") + 
-  scale_linetype_manual(values = c("Categorical" = "solid", "Continuous" = "dashed"))
+  scale_linetype_manual(values = c("Categorical" = "solid", "Continuous" = "dashed")) +
+  theme(text = element_text(size = 16),  # Default text size for all text elements
+        axis.title = element_text(size = 18),  # Axis titles
+        axis.text = element_text(size = 16),  # Axis text
+        legend.title = element_text(size = 16),  # Legend title
+        legend.text = element_text(size = 14),  # Legend items
+        plot.title = element_text(size = 20, face = "bold"))  # Plot title
+
