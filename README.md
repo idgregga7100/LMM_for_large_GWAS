@@ -123,10 +123,10 @@ Location of results files, including the log file, can all be found in the same 
 
 ## Analysis
 
-True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. We filtered these down to remove any beta values less than abs val of 1, which leaves 3105 'causal' SNPs for the categorical trait and 3115 'causal' SNPs for the continuous trait. These filtered files are located:
-```
-/home/igregga/LMM_files/phenos/simu-*_filtered.par
-```
+### Scalability
+### Accuracy
+
+The effect sizes of new tools were correlated with the effect sizes of PLINK2 results with p<1e-05, under the assumption that these should capture causal SNPs. Seven SNPs were significant at the genome-wide threshold 5e-08 for the continuous trait with PLINK2, and these were highlighted in continuous GWAS results of the new tools.
 
 ## Usability Ratings
 
@@ -158,20 +158,20 @@ True beta values were provided (see above) for 10,000 of the 1.6mil total SNPs. 
 **Notes**:
 
 ### REGENIE
-**Installation & Accessibility**: 
+**Installation & Accessibility**: 5/5, if using provided conda env. 2/5 if not
 
-**Usability**:
+**Usability**: 4/5
 
-**Overall**:
+**Overall**: 4/5
 
-**Notes**:
+**Notes**: Dependency requirements are complicated, but conda works smoothly and easily. Needs two steps. Documentation is pretty thorough, with explanation of the algorithm/process etc.
 
 ### SUGEN
-**Installation & Accessibility**: 
+**Installation & Accessibility**: 3/5
 
-**Usability**:
+**Usability**: 0/5
 
-**Overall**:
+**Overall**: 1/5
 
-**Notes**:
+**Notes**: It has potential: installed easily enough, but documentation has a lot of room for improvement. No help flag. Would only need one step to run, but ran into an error message about formatting (?) and couldn't figure out what is needed to fix it. Could not run. Opened a github issue but haven't gotten any response.
 
