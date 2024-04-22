@@ -140,22 +140,22 @@ The effect sizes of new tools were correlated with the effect sizes of PLINK2 re
 **Notes**: There is a reason why plink is the industry standard!
 
 ### BOLT-LMM
-**Installation & Accessibility**: 4/5
+**Installation & Accessibility**: 5/5
 
-**Usability**: 
+**Usability**: 4/5
 
-**Overall**:
+**Overall**: 4/5
 
-**Notes**:
+**Notes**: Runs in one step and relatively easy to use. Requires reference LD scores.
 
 ### SAIGE
-**Installation & Accessibility**: 
+**Installation & Accessibility**: 4/5
 
-**Usability**:
+**Usability**: 3/5
 
-**Overall**:
+**Overall**: 3/5
 
-**Notes**:
+**Notes**:Takes two steps per run, with different settings for categorical and continuous in each step. One the one hand, the plethera of flag options means it's very customizable, but it's a lot to sort through. If fitting a full GRM model, takes a LONG time to run!
 
 ### REGENIE
 **Installation & Accessibility**: 5/5, if using provided conda env. 2/5 if not
