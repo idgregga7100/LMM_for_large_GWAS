@@ -124,6 +124,10 @@ Location of results files, including the log file, can all be found in the same 
 ## Analysis
 
 ### Scalability
+Runtime was recorded using the `--time` command which outputs CPU realtime, CPU user time, and CPU system time. To achieve the most holistic metric, we added user time and system time in our final analysis. 
+
+Memory was recorded using the `--verbose` command which recorded the max CPU the job may occupy (aka max resident) in kilobytes. These values were converted to gigabytes in the final analysis. 
+
 ### Accuracy
 
 The effect sizes of new tools were correlated with the effect sizes of PLINK2 results with p<1e-05, under the assumption that these should capture causal SNPs. Seven SNPs were significant at the genome-wide threshold 5e-08 for the continuous trait with PLINK2, and these were highlighted in continuous GWAS results of the new tools.
