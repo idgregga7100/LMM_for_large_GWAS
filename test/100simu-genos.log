@@ -1,0 +1,27 @@
+PLINK v2.00a5.10LM 64-bit Intel (5 Jan 2024)
+Options in effect:
+  --bfile /home/data/simulated_gwas/simu-genos
+  --keep /home/igregga/LMM_files/100_id_list.txt
+  --make-bed
+  --out /home/igregga/LMM_for_large_GWAS/test/100simu-genos
+
+Hostname: turing
+Working directory: /home/igregga/LMM_for_large_GWAS
+Start time: Thu Apr 25 13:09:14 2024
+
+Random number seed: 1714068554
+322432 MiB RAM detected, ~305347 available; reserving 161216 MiB for main
+workspace.
+Using up to 48 threads (change this with --threads).
+5000 samples (0 females, 0 males, 5000 ambiguous; 5000 founders) loaded from
+/home/data/simulated_gwas/simu-genos.fam.
+1656114 variants loaded from /home/data/simulated_gwas/simu-genos.bim.
+Note: No phenotype data present.
+--keep: 100 samples remaining.
+100 samples (0 females, 0 males, 100 ambiguous; 100 founders) remaining after
+main filters.
+Writing /home/igregga/LMM_for_large_GWAS/test/100simu-genos.fam ... done.
+Writing /home/igregga/LMM_for_large_GWAS/test/100simu-genos.bim ... done.
+Writing /home/igregga/LMM_for_large_GWAS/test/100simu-genos.bed ... done.
+
+End time: Thu Apr 25 13:09:16 2024

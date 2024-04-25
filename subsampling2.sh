@@ -7,4 +7,4 @@
 #./plink2 --bfile /home/data/simulated_gwas/simu-genos --keep /home/igregga/LMM_files/1250_id_list.txt --make-bed --out /home/igregga/LMM_files/1250simu-genos
 
 #100 for test data
-/home/igregga/plink2 --bfile /home/data/simulated_gwas/simu-genos --keep /home/igregga/LMM_files/1250_id_list.txt --make-bed --out /home/igregga/LMM_for_large_GWAS/test/100simu-genos
+/home/igregga/plink2 --bfile /home/data/simulated_gwas/simu-genos --keep /home/igregga/LMM_files/100_id_list.txt --make-bed --out /home/igregga/LMM_for_large_GWAS/test/100simu-genos
