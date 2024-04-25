@@ -10,11 +10,13 @@
 #full path to bed/bim/fam directory: /home/igregga/LMM_files/
 geno_dir=/home/igregga/LMM_files/
 #prefix of bed/bim/fam files
-geno_prefix=1250simu-genos
+geno_prefix=/home/igregga/LMM_files/1250simu-genos
 #full path to phenotypes (with header row containing FID and IID!)
 pheno=/home/igregga/LMM_files/phenos/simu_categorical.phen 
 #name of column in pheno file containing the phenotype
 pheno_col=TRAIT
+#prefix for output file name, will be <prefix>.tab
+out_prefix=1250simu-genos_bolt
 #number of threads to use
 threads=2
 
@@ -34,7 +36,7 @@ cwd=$(pwd)
 # ./bolt --bfile=geno --phenoFile=pheno.txt --phenoCol=phenoName --lmm --LDscoresFile=tables/LDSCORE.1000G_EUR.tab.gz --statsFile=stats.tab
 
 # change to directory with input genotype files
-cd $geno_dir
+#cd $geno_dir
 
 # command to compute for categorical or continuous, including time and memory for benchmarking
 time /usr/bin/time --verbose $cwd/../../BOLT-LMM_v2.4.1/bolt \
@@ -46,7 +48,7 @@ time /usr/bin/time --verbose $cwd/../../BOLT-LMM_v2.4.1/bolt \
     --maxModelSnps=2000000 \
     --LDscoresMatchBp \
     --LDscoresFile=$cwd/../../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
-    --statsFile=$cwd/BOLT_results/${geno_prefix}_stats.tab;
+    --statsFile=$cwd/BOLT_results/${out_prefix}.tab;
 echo "BOLT-LMM for ${geno_prefix} is complete."
 
 
@@ -55,7 +57,7 @@ echo "BOLT-LMM for ${geno_prefix} is complete."
 # --LDscoresMatchBp: used when bim file does not contain rsIDs, allows matching by base pair coordinate instead; in conjuction with --LDscoresFile
 # --LDscoresFile: reference LD scores needed to calibrate BOLT-LMM statistic
 
-# to run: nohup bash run_BOLT.sh > nohup_BOLT.out &
+# to run: nohup bash run_BOLT_test.sh > nohup_BOLT_test.out &
 
 
 #_______________________
@@ -67,4 +69,5 @@ echo "BOLT-LMM for ${geno_prefix} is complete."
     # prefix of bam/bim/fam plink format files for $geno_prefix (passed to --bfile)
     # pheno file path/name (full path!) for $pheno (passed to --phenoFile)
     # column name of column containing phenotype for $pheno_col (passed to --phenoCol)
+    # prefix to name output file (passed to --statFile)
     # ?maybe number of threads for $threads (passed to --numThreads)
