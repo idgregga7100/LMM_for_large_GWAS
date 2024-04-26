@@ -9,8 +9,10 @@ pheno=whatev
 output=test_out
 
 outbolt=${output}_bolt
+outsaige=${output}_saige
+#etc
 
 run_bolt -o outbolt
 
-rscript -e 'rmarkdown::render(\"plot.rmd\",params=list(bolt=outbolt))'
+rscript -e 'rmarkdown::render(\"plot.rmd\",params=list(bolt=outbolt,saige=outsaige,etc))'
 #not 100% on how passing a bash variable to the rendering command should work
