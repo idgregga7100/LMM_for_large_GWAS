@@ -6,17 +6,47 @@
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
 
+while :
+do
+    case "$1" in
+      -i | --plink_input_prefix)
+	        geno_prefix=$2
+	        shift 2
+	        ;;
+      -p | --pheno_file)
+	        pheno=$2
+	        shift 2
+	        ;;
+      -c | --trait_col_name)
+	        pheno_col=$2
+	        shift 2
+	        ;;
+      -o | --output_prefix)
+            out_prefix=$2
+            shift 2
+            ;;      
+      -t | --n_threads)
+            threads=$2
+            shift 2
+            ;;
+      *)  # No more options
+         	shift
+	        break
+	        ;;
+     esac
+done
+
 ## FOR ARGPARSING!
 #path & prefix of bed/bim/fam files
-geno_prefix=100simu-genos
+#geno_prefix=100simu-genos
 #path to phenotypes (with header row containing FID and IID!)
-pheno=simu_categorical-01na.phen
+#pheno=simu_categorical-01na.phen
 #name of column in pheno file containing the phenotype
-pheno_col=TRAIT
+#pheno_col=TRAIT
 #prefix for output file name, will be <prefix>.tab
-out_prefix=100simu-genos_cc_bolt
+#out_prefix=100simu-genos_cc_bolt
 #number of threads to use
-threads=2
+#threads=2
 
 # Set to log steps as they run for troubleshooting
 set -x
