@@ -1,12 +1,16 @@
 # LMM_for_large_GWAS
 COMP383/483 project
 
+## General Required Dependencies
+
+!!NEED TO ADD -- R packages (dplyr, ggplot2, qqman, data.table, etc)
+
 ## LMM Tools and PLINK2 Installation
 
 The following tools (and any necessary dependencies) were installed according to each tool's Wiki page (in this repo).
 * BOLT-LMM
 * SAIGE
-* SUGEN (so far not entirely functional?)
+* SUGEN (so far not entirely functional)
 * REGENIE
 * PLINK2
 
