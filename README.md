@@ -50,7 +50,7 @@ nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TR
 ```
 A more generalized command:
 ```
-nohup bash run_BOLT_test.sh -i <input_prefix> -p <phenotype_file> -c <pheno_column_name> -o <output_prefix> -t <number_threads> > nohup_BOLT_test.out &
+nohup bash run_BOLT_test.sh -i <bed-bim-fam_input_prefix> -p <phenotype_file> -c <pheno_column_name> -o <output_prefix> -t <number_threads> > nohup_BOLT_test.out &
 ```
 
 ## Benchmark Runs
