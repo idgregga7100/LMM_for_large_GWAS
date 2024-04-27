@@ -13,11 +13,9 @@
 input_prefix=100simu-genos
 #path to phenotypes (passed to --phenoFile)
 pheno=simu_continous.phen
-#name of column in pheno file containing the phenotype (passed to --phenoCol)
-#pheno_col=TRAIT
-#prefix for output file name, will be <prefix>.tab (passed to --statsFile with directory)
+#prefix for output file name (passed within --out and --pred)
 out_prefix=100simu-genos
-#number of threads to use (passed to --numThreads)
+#number of threads to use (passed to --threads)
 threads=2
 
 # Set to log steps as they run for troubleshooting
@@ -34,7 +32,7 @@ time /usr/bin/time --verbose regenie --step 1 \
 --bed ${input_prefix} \
 --phenoFile ${pheno} \
 --bsize 1000 \
---out REGENIE_results/${input_prefix}_cont-fit \
+--out REGENIE_results/${out_prefix}_cont-fit \
 --force-step1 \
 --lowmem \
 --lowmem-prefix REGENIE_results/tmp \
@@ -43,10 +41,10 @@ time /usr/bin/time --verbose regenie --step 1 \
 #run regenie step 2
 time /usr/bin/time --verbose regenie --step 2 \
 --bed ${input_prefix} \
---pred REGENIE_results/${input_prefix}_cont-fit_pred.list \
+--pred REGENIE_results/${out_prefix}_cont-fit_pred.list \
 --phenoFile ${pheno} \
 --bsize 1000 \
---out REGENIE_results/${f}_cont-test \
+--out REGENIE_results/${out_prefix}_cont-test \
 --threads ${threads}
 
 #conda deactivate
