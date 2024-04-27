@@ -36,6 +36,23 @@ Header added to pheno files using cat on the command line. Case/control coding c
 ```
 /home/igregga/LMM_files/phenos/
 ```
+## Running Test Scripts with Test Data
+
+The directory `test` includes generalized scripts and small data files to test functionality. All scripts should be run from within that directory.
+
+### BOLT-LMM
+
+BOLT requires that categorical phenotypes are coded control=0 and case=1.
+
+Command to run with provided test data using nohup:
+```
+nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc_bolt -t 2 > nohup_BOLT_test.out &
+```
+A more generalized command:
+```
+nohup bash run_BOLT_test.sh -i <input_prefix> -p <phenotype_file> -c <pheno_column_name> -o <output_prefix> -t <number_threads> > nohup_BOLT_test.out &
+```
+
 ## Benchmark Runs
 
 *Note: all commands can be run from inside the `LMM_for_large_GWAS` repo directory.??*
