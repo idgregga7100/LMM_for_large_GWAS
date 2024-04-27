@@ -5,6 +5,7 @@
 #####
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
+# to run: nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc_bolt -t 2 > nohup_BOLT_test.out &
 
 while :
 do
@@ -64,7 +65,7 @@ cwd=$(pwd)
 # ./bolt --bfile=geno --phenoFile=pheno.txt --phenoCol=phenoName --lmm --LDscoresFile=tables/LDSCORE.1000G_EUR.tab.gz --statsFile=stats.tab
 
 # command to compute for categorical or continuous, including time and memory for benchmarking
-time /usr/bin/time --verbose $cwd/../../BOLT-LMM_v2.4.1/bolt \
+time /usr/bin/time --verbose $cwd/../BOLT-LMM_v2.4.1/bolt \
     --bfile=$geno_prefix \
     --phenoFile=$pheno \
     --phenoCol=$pheno_col \
@@ -72,7 +73,7 @@ time /usr/bin/time --verbose $cwd/../../BOLT-LMM_v2.4.1/bolt \
     --lmm \
     --maxModelSnps=2000000 \
     --LDscoresMatchBp \
-    --LDscoresFile=$cwd/../../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
+    --LDscoresFile=$cwd/../BOLT-LMM_v2.4.1/tables/LDSCORE.1000G_EUR.tab.gz \
     --statsFile=$cwd/BOLT_results/${out_prefix}.tab;
 echo "BOLT-LMM for ${geno_prefix} is complete."
 
@@ -81,8 +82,6 @@ echo "BOLT-LMM for ${geno_prefix} is complete."
 # --maxModelSnps: maximum SNPs allowed; changed from default of 1000000
 # --LDscoresMatchBp: used when bim file does not contain rsIDs, allows matching by base pair coordinate instead; in conjuction with --LDscoresFile
 # --LDscoresFile: reference LD scores needed to calibrate BOLT-LMM statistic
-
-# to run: nohup bash run_BOLT_test.sh > nohup_BOLT_test.out &
 
 
 #_______________________
@@ -94,4 +93,4 @@ echo "BOLT-LMM for ${geno_prefix} is complete."
     # pheno file path/name for $pheno (passed to --phenoFile)
     # column name of column containing phenotype for $pheno_col (passed to --phenoCol)
     # prefix to name output file (passed to --statFile)
-    # ?maybe number of threads for $threads (passed to --numThreads)
+    # number of threads for $threads (passed to --numThreads)
