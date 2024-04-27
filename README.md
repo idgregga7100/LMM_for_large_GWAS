@@ -45,6 +45,8 @@ Header added to pheno files using cat on the command line. Case/control coding c
 
 The directory `test` includes generalized scripts and small data files to test functionality. All scripts should be run from within the `test` directory.
 
+### PLINK2 (baseline)
+
 ### BOLT-LMM
 
 BOLT requires that categorical phenotypes are coded control=0 and case=1, but otherwise script can be used for categorical or continuous phenotypes with no adjustment needed.
@@ -57,6 +59,9 @@ A more generalized command (update with user-specific parameters):
 ```
 nohup bash run_BOLT_test.sh -i <bed-bim-fam_input_prefix> -p <phenotype_file> -c <pheno_column_name> -o <output_prefix> -t <number_threads> > nohup_BOLT_test.out &
 ```
+### REGENIE
+
+### SAIGE
 
 ## Benchmark Runs
 
@@ -134,7 +139,7 @@ Tool generates multiple log files for each run, and prints much of this info to 
 /home/igregga/regenie-out/*.regenie
 ```
 
-### PLINK2
+### PLINK2 (baseline)
 The script to run PLINK2, `run_PLINK2.sh`, completes a GWAS for the continuous trait for each subset and then the categorical. 
 
 The command to run the plink2 script is:
