@@ -1,9 +1,10 @@
 # LMM_for_large_GWAS
 COMP383/483 project
 
-## General Required Dependencies
+## General Dependencies (Install If Needed)
+To run the included scripts, users need to have the following programs (and packages) installed:
 
-!!NEED TO ADD -- R packages (dplyr, ggplot2, qqman, data.table, etc)
+- R & Rscript (dplyr, ggplot2, qqman, data.table) [ANY MISSING?]  
 
 ## LMM Tools and PLINK2 Installation
 
