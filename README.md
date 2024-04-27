@@ -42,7 +42,7 @@ The directory `test` includes generalized scripts and small data files to test f
 
 ### BOLT-LMM
 
-BOLT requires that categorical phenotypes are coded control=0 and case=1.
+BOLT requires that categorical phenotypes are coded control=0 and case=1, but otherwise script can be used for categorical or continuous phenotypes with no adjustment needed.
 
 Command to run with provided test data using nohup:
 ```
