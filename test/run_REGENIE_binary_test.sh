@@ -6,13 +6,13 @@
 #ACTIVATE CONDA ENV FIRST from command line
 #conda activate regenie_env
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# to run: nohup bash run_REGENIE_cont_test.sh > nohup_REGENIE_cont_test.out &
+# to run: nohup bash run_REGENIE_binary_test.sh > nohup_REGENIE_binary_test.out &
 
 ## FOR ARGPARSING!
 #path & prefix of bed/bim/fam files (passed to --bed)
 input_prefix=/home/igregga/LMM_files/1250simu-genos
-#path to phenotypes (passed to --phenoFile)
-pheno=simu_continous.phen
+#path to phenotypes (passed to --phenoFile) Phenotypes case-control coded as 0-1!!
+pheno=simu_categorical-01na.phen
 #prefix for output file name (passed within --out and --pred)
 out_prefix=100simu-genos
 #number of threads to use (passed to --threads)
@@ -22,29 +22,31 @@ threads=2
 set -x
 
 # create directory to hold BOLT output, if it doesn't already exist
-if ! ./REGENIE_results;
+if ! ./REGENIE_binary_results;
 then
-    mkdir REGENIE_results
+    mkdir REGENIE_binary_results
 fi
 
 #run regenie step 1
 time /usr/bin/time --verbose regenie --step 1 \
 --bed ${input_prefix} \
 --phenoFile ${pheno} \
+--bt \
 --bsize 1000 \
---out REGENIE_results/${out_prefix}_cont-fit \
+--out REGENIE_binary_results/${out_prefix}_binary-fit \
 --force-step1 \
 --lowmem \
---lowmem-prefix REGENIE_results/tmp \
+--lowmem-prefix REGENIE_binary_results/tmp \
 --threads ${threads}
 
 #run regenie step 2
 time /usr/bin/time --verbose regenie --step 2 \
 --bed ${input_prefix} \
---pred REGENIE_results/${out_prefix}_cont-fit_pred.list \
+--pred REGENIE_binary_results/${out_prefix}_binary-fit_pred.list \
 --phenoFile ${pheno} \
+--bt \
 --bsize 1000 \
---out REGENIE_results/${out_prefix}_cont-test \
+--out REGENIE_binary_results/${out_prefix}_binary-test \
 --threads ${threads}
 
 #conda deactivate
