@@ -38,16 +38,18 @@ do
 done
 
 ## FOR ARGPARSING!
-#path & prefix of bed/bim/fam files
+#path & prefix of bed/bim/fam files (passed to --bfile)
 #geno_prefix=100simu-genos
-#path to phenotypes (with header row containing FID and IID!)
+#path to phenotypes (with header row containing FID and IID!) (passed to --phenoFile)
 #pheno=simu_categorical-01na.phen
-#name of column in pheno file containing the phenotype
+#name of column in pheno file containing the phenotype (passed to --phenoCol)
 #pheno_col=TRAIT
-#prefix for output file name, will be <prefix>.tab
+#prefix for output file name, will be <prefix>.tab (passed to --statsFile with directory)
 #out_prefix=100simu-genos_cc_bolt
-#number of threads to use
+#number of threads to use (passed to --numThreads)
 #threads=2
+
+# no need to specify cc or qt, runs the same for both!
 
 # Set to log steps as they run for troubleshooting
 set -x
@@ -77,20 +79,8 @@ time /usr/bin/time --verbose $cwd/../BOLT-LMM_v2.4.1/bolt \
     --statsFile=$cwd/BOLT_results/${out_prefix}.tab;
 echo "BOLT-LMM for ${geno_prefix} is complete."
 
-
+#Notes on flags:
 # --lmm: default BOLT-LMM analysis
 # --maxModelSnps: maximum SNPs allowed; changed from default of 1000000
 # --LDscoresMatchBp: used when bim file does not contain rsIDs, allows matching by base pair coordinate instead; in conjuction with --LDscoresFile
 # --LDscoresFile: reference LD scores needed to calibrate BOLT-LMM statistic
-
-
-#_______________________
-# Notes for converting to argparse
-
-# no need to specify cc or qt, runs the same for both!
-# need to take in:
-    # path and prefix of bam/bim/fam plink format files for $geno_prefix (passed to --bfile)
-    # pheno file path/name for $pheno (passed to --phenoFile)
-    # column name of column containing phenotype for $pheno_col (passed to --phenoCol)
-    # prefix to name output file (passed to --statFile)
-    # number of threads for $threads (passed to --numThreads)
