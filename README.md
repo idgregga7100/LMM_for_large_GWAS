@@ -48,7 +48,7 @@ Command to run with provided test data using nohup:
 ```
 nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc_bolt -t 2 > nohup_BOLT_test.out &
 ```
-A more generalized command:
+A more generalized command (update with user-specific parameters):
 ```
 nohup bash run_BOLT_test.sh -i <bed-bim-fam_input_prefix> -p <phenotype_file> -c <pheno_column_name> -o <output_prefix> -t <number_threads> > nohup_BOLT_test.out &
 ```
