@@ -9,7 +9,7 @@
 ## FOR ARGPARSING!
 # Path & prefix of bed/bim/fam input files (passed to --bfile)
 INPUT_PREFIX=100simu-genos
-# Phenotype file (passed to --pheno) No header row!!
+# Phenotype file (passed to --pheno) Case/controls need to be 1/2!!!
 PHENO_FILE=simu_categorical.phen
 # name of column in pheno file containing the phenotype (passed to --pheno-name)
 PHENO_COL=TRAIT
