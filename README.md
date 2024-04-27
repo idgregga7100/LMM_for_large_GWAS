@@ -38,7 +38,7 @@ Header added to pheno files using cat on the command line. Case/control coding c
 ```
 ## Running Test Scripts with Test Data
 
-The directory `test` includes generalized scripts and small data files to test functionality. All scripts should be run from within that directory.
+The directory `test` includes generalized scripts and small data files to test functionality. All scripts should be run from within the `test` directory.
 
 ### BOLT-LMM
 
@@ -55,7 +55,7 @@ nohup bash run_BOLT_test.sh -i <input_prefix> -p <phenotype_file> -c <pheno_colu
 
 ## Benchmark Runs
 
-*Note: all commands can be run from inside the `LMM_for_large_GWAS` repo directory.??*
+*Note: This section details the scripts and data used to benchmark the tools in this project. May include hardcoded paths, as many files are too big to store on github.*
 
 For benchmark runs, each tool was set to use 2 threads where possible. Time was measured using the `time` command and memory usage by `/usr/bin/time --verbose`, which logs the maximum resident set size. The general command format:
 ```
