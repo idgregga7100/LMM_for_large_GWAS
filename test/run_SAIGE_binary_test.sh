@@ -9,19 +9,53 @@
 
 # needs binary traits to be 0 and 1!!
 
+while :
+do
+    case "$1" in
+      -i | --plink_input_prefix)
+	        input_prefix_prefix=$2
+	        shift 2
+	        ;;
+      -p | --pheno_file)
+	        pheno=$2
+	        shift 2
+	        ;;
+      -c | --trait_col_name)
+	        pheno_col=$2
+	        shift 2
+	        ;;
+      -s | --sample_col_name)
+            sample_col=$2
+            shift 2
+            ;;
+      -o | --output_prefix)
+            out_prefix=$2
+            shift 2
+            ;;      
+      -t | --n_threads)
+            threads=$2
+            shift 2
+            ;;
+      *)  # No more options
+         	shift
+	        break
+	        ;;
+     esac
+done
+
 ## FOR ARGPARSING!
 #path & prefix of bed/bim/fam files (passed to --plinkFile, --bedFile, --bimFile, --famFile)
-input_prefix=100simu-genos
+#input_prefix=100simu-genos
 #path to phenotypes (passed to --phenoFile) with header row containing FID and IID! Phenotypes case-control coded as 0-1!!
-pheno=simu_categorical-01na.phen
+#pheno=simu_categorical-01na.phen
 #name of column in pheno file containing the phenotype (passed to --phenoCol)
-pheno_col=TRAIT
+#pheno_col=TRAIT
 #name of column in pheno file containing sample ids (passed to --sampleIDColinphenoFile)
-sample_col=IID
+#sample_col=IID
 #prefix for output file name (passed within --outputPrefix)
-out_prefix=100simu-genos
+#out_prefix=100simu-genos
 #number of threads to use (passed to --threads)
-threads=2
+#threads=2
 
 # Set to log steps as they run for troubleshooting
 set -x

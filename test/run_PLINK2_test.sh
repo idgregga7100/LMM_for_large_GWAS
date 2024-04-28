@@ -6,17 +6,47 @@
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
 # Command to run script: nohup bash run_PLINK2_test.sh > nohup_PLINK2_test.out &
 
+while :
+do
+    case "$1" in
+      -i | --plink_input_prefix)
+	        INPUT_PREFIX=$2
+	        shift 2
+	        ;;
+      -p | --pheno_file)
+	        PHENO_FILE=$2
+	        shift 2
+	        ;;
+      -c | --trait_col_name)
+	        PHENO_COL=$2
+	        shift 2
+	        ;;
+      -o | --output_prefix)
+            OUTPUT_PREFIX=$2
+            shift 2
+            ;;      
+      -t | --n_threads)
+            THREADS=$2
+            shift 2
+            ;;
+      *)  # No more options
+         	shift
+	        break
+	        ;;
+     esac
+done
+
 ## FOR ARGPARSING!
 # Path & prefix of bed/bim/fam input files (passed to --bfile)
-INPUT_PREFIX=100simu-genos
+#INPUT_PREFIX=100simu-genos
 # Phenotype file (passed to --pheno) Case/controls need to be 1/2!!!
-PHENO_FILE=simu_categorical.phen
+#PHENO_FILE=simu_categorical.phen
 # name of column in pheno file containing the phenotype (passed to --pheno-name)
-PHENO_COL=TRAIT
+#PHENO_COL=TRAIT
 #prefix for output file name (passed to --out with directory name)
-OUTPUT_PREFIX=100simu-genos_cc
+#OUTPUT_PREFIX=100simu-genos_cc
 #number of threads to use
-THREADS=2
+#THREADS=2
 
 # no need to specify cc or qt, runs the same for both!
 

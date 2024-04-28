@@ -8,15 +8,41 @@
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
 # to run: nohup bash run_REGENIE_cont_test.sh > nohup_REGENIE_cont_test.out &
 
+while :
+do
+    case "$1" in
+      -i | --plink_input_prefix)
+	        input_prefix=$2
+	        shift 2
+	        ;;
+      -p | --pheno_file)
+	        pheno=$2
+	        shift 2
+	        ;;
+      -o | --output_prefix)
+            out_prefix=$2
+            shift 2
+            ;;      
+      -t | --n_threads)
+            threads=$2
+            shift 2
+            ;;
+      *)  # No more options
+         	shift
+	        break
+	        ;;
+     esac
+done
+
 ## FOR ARGPARSING!
 #path & prefix of bed/bim/fam files (passed to --bed)
-input_prefix=/home/igregga/LMM_files/1250simu-genos
+#input_prefix=/home/igregga/LMM_files/1250simu-genos
 #path to phenotypes (passed to --phenoFile)
-pheno=simu_continous.phen
+#pheno=simu_continous.phen
 #prefix for output file name (passed within --out and --pred)
-out_prefix=100simu-genos
+#out_prefix=100simu-genos
 #number of threads to use (passed to --threads)
-threads=2
+#threads=2
 
 # Set to log steps as they run for troubleshooting
 set -x
