@@ -161,6 +161,7 @@ Location of results files:
 Notes on this run:
 * No covariates provided.
 * Runs in two steps, with more required flags that the other tools.
+* Fit a full genetic relationship model in step 1, which may have overfit the data (and takes a long time to run). There is an option to use a sparse model.
 * Manual highly recommends running for 1 chromosome at a time using parameters `--LOCO=TRUE` with `--CHROM` specified (genotype/dosage file contain only 1 chrom) to avoid proximal contamination. Did not use, and went ahead with all at once.
 * Did go with the recommendation to use Firth's Bias-Reduced Logistic Regression for more accurate effect sizes (binary only). Used `--is_Firth_beta=TRUE` and `--pCutoffforFirth=0.05` so markers with p-value < cutoff are estimated through Firth's.
 
