@@ -6,7 +6,7 @@
 #ACTIVATE CONDA ENV FIRST from command line
 #conda activate regenie_env
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# to run: nohup bash run_REGENIE_cont_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_continous.phen -o 1250simu-genos_qt -t 2 > nohup_REGENIE_cont_test.out &
+# to run: nohup bash run_REGENIE_cont_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_continous.phen -o 1250simu-genos_regenie_qt -t 2 > nohup_REGENIE_cont_test.out &
 
 while :
 do
@@ -40,7 +40,7 @@ done
 #path to phenotypes (passed to --phenoFile)
 #pheno=simu_continous.phen
 #prefix for output file name (passed within --out and --pred)
-#out_prefix=100simu-genos
+#out_prefix=100simu-genos_regenie_qt
 #number of threads to use (passed to --threads)
 #threads=2
 
