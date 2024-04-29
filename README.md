@@ -63,12 +63,39 @@ nohup bash run_SAIGE_cont_test.sh -i 100simu-genos -p simu_continous.phen -c TRA
 ```
 And a generalized command for continous phenotypes:
 ```
-nohup bash run_SAIGE_cont_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c pheno column name> -s <sample id column name in pheno file> -o 1<output prefix> -t <threads> > nohup_SAIGE_cont_test.out &
+nohup bash run_SAIGE_cont_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c pheno column name> -s <sample id column name in pheno file> -o <output prefix> -t <threads> > nohup_SAIGE_cont_test.out &
 ```
 
 ### REGENIE
 
-_____________________________
+Since REGENIE is installed within a conda environment, activate the environment before running REGENIE scripts:
+```
+conda activate regenie_env
+```
+REGENIE accepts phenotype file containing a header row. For binary traits, it has the option to accept 1/2 instead of 0/1 for control/case, but script currently set to accept 0/1.
+
+Running REGENIE with the included n=100 test dataset generates an error (errors out analyzing a SNP on chromosome 1 that has 0 variance), but it does work with the n=1250 and larger subsets from the benchmark analysis. (It takes >10 Gb of memory at times while running!) Command to run for binary phenotype, n=1250 subset on class server (~30 min real time):
+```
+nohup bash run_REGENIE_binary_test.sh -i /home/igregga/LMM_files/1250simu-genos -p <phenotype file> -o 1250simu-genos_cc -t 2 > nohup_REGENIE_binary_test.out &
+```
+Generalized command for binary:
+```
+nohup bash run_REGENIE_binary_test.sh -i <path/prefix of bed-bim-fam> -p simu_categorical-01na.phen -o <output prefix> -t <threads> > nohup_REGENIE_binary_test.out &
+```
+Command to run for continous phenotype, n=1250 subset on class server:
+```
+nohup bash run_REGENIE_cont_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_continous.phen -o 1250simu-genos_qt -t 2 > nohup_REGENIE_cont_test.out &
+```
+Generalized command for continous:
+```
+nohup bash run_REGENIE_cont_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -o <output prefix> -t <threads> > nohup_REGENIE_cont_test.out &
+```
+When finished, deactivate the conda environment:
+```
+conda deactivate
+```
+
+______________________________________________________________
 *Note: The rest of this README details the scripts and full-scale data used to benchmark the tools in this project, as well as notes on tool use. Includes hardcoded paths, as many files are too big to store on github.*
 
 ## Preprocessing & File Preparation
@@ -202,7 +229,7 @@ Notes on this run:
 ### Scalability
 Runtime was recorded using the `--time` command which outputs CPU realtime, CPU user time, and CPU system time. To achieve the most holistic metric, we added user time and system time in our final analysis. 
 
-Memory was recorded using the `--verbose` command which recorded the max CPU the job may occupy (aka max resident) in kilobytes. These values were converted to gigabytes in the final analysis. 
+Memory was recorded using the `/usr/bin/time --verbose` command which recorded the max CPU the job may occupy (aka max resident) in kilobytes. These values were converted to gigabytes in the final analysis. 
 
 ### Accuracy
 
