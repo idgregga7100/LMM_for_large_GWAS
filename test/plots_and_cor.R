@@ -12,13 +12,11 @@ library(stringr)
 parser<-ArgumentParser()
 parser$add_argument("-p", "--plink_files", type="character")
 parser$add_argument('-t','--tool_files',type='character')
-parser$add_argument('-o','--outdir',type='character')
 args<-parser$parse_args()
 plinkfiles<-args$plink_files
 plinkfiles<-str_split(plinkfiles,',')[[1]]
 toolfiles<-args$tool_files
 toolfiles<-str_split(toolfiles,',')[[1]]
-outdir<-args$outdir
 
 #filtering down plink; using suggestive line from manplot fn at 1e-5
 plinkqt<-str_subset(plinkfiles,'qt')%>%fread()
