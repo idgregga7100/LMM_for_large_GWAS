@@ -86,7 +86,7 @@ Command to run for continous phenotype, n=1250 subset on class server:
 ```
 nohup bash run_REGENIE_cont_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_continous.phen -o 1250simu-genos_qt -t 2 > nohup_REGENIE_cont_test.out &
 ```
-Generalized command for continous:
+Generalized command for continous (~64 min real time):
 ```
 nohup bash run_REGENIE_cont_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -o <output prefix> -t <threads> > nohup_REGENIE_cont_test.out &
 ```
