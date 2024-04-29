@@ -57,7 +57,7 @@ nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TR
 ```
 A more generalized command (update with user-specific parameters):
 ```
-nohup bash run_BOLT_test.sh -i <bed-bim-fam_input_prefix> -p <phenotype_file> -c <pheno_column_name> -o <output_prefix> -t <number_threads> > nohup_BOLT_test.out &
+nohup bash run_BOLT_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c <pheno column name> -o <output prefix> -t <number threads> > nohup_BOLT_test.out &
 ```
 ### REGENIE
 
@@ -75,7 +75,7 @@ This was incorporated into each of the tool-specific shell scripts detailed belo
 
 ### BOLT-LMM
 
-The script to run BOLT, `run_BOLT.sh`, first completes a GWAS for the continous trait (looping through each of the subsets) and then completes a GWAS for the categorical trait. 
+The script to run BOLT, `run_BOLT.sh`, first completes a GWAS for the continous trait (looping through each of the subsets) and then does the same for the categorical trait. 
 
 Command to run:
 ```
@@ -96,6 +96,8 @@ Location of results files:
 # log file:
 /home/tfischer1/LMM_for_large_GWAS/nohup_BOLT.out 
 ```
+Notes on this run:
+
 
 ### SAIGE
 
@@ -122,6 +124,8 @@ Location of results files:
 # log file:
 /home/tfischer1/LMM_for_large_GWAS/nohup_SAIGE.out  
 ```
+Notes on this run:
+
 
 ### SUGEN
 
@@ -138,6 +142,8 @@ Tool generates multiple log files for each run, and prints much of this info to 
 ```
 /home/igregga/regenie-out/*.regenie
 ```
+Notes on this run:
+
 
 ### PLINK2 (baseline)
 The script to run PLINK2, `run_PLINK2.sh`, completes a GWAS for the continuous trait for each subset and then the categorical. 
@@ -147,6 +153,9 @@ The command to run the plink2 script is:
 nohup bash run_PLINK2.sh > PLINK2.out &
 ```
 Location of results files, including the log file, can all be found in the same directory: `/home/wprice2/gwas_results`.
+
+Notes on this run:
+
 
 ## Analysis
 
