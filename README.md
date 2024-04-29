@@ -47,17 +47,26 @@ The directory `test` includes generalized scripts and small data files to test f
 
 ### PLINK2 (baseline)
 
+Command to run with provided test data using nohup:
+```
+nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_PLINK2_test.out &
+```
+A more generalized command (update with user-specific parameters):
+```
+nohup bash run_PLINK2_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c <pheno column name> -o <output prefix> -t <threads> > nohup_PLINK2_test.out &
+```
+
 ### BOLT-LMM
 
 The test script can be used for either categorical or continuous phenotypes with no adjustment needed. BOLT requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1.
 
 Command to run with provided test data using nohup:
 ```
-nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc_bolt -t 2 > nohup_BOLT_test.out &
+nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_BOLT_test.out &
 ```
 A more generalized command (update with user-specific parameters):
 ```
-nohup bash run_BOLT_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c <pheno column name> -o <output prefix> -t <number threads> > nohup_BOLT_test.out &
+nohup bash run_BOLT_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c <pheno column name> -o <output prefix> -t <threads> > nohup_BOLT_test.out &
 ```
 ### REGENIE
 
