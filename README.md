@@ -4,7 +4,7 @@ COMP383/483 project
 ## General Dependencies (Install If Needed)
 To run the included scripts, users need to have the following programs (and packages) installed:
 
-- R & Rscript (dplyr, ggplot2, qqman, data.table)  
+- R & Rscript (dplyr, ggplot2, qqman, data.table, stringr, argparse)  
 
 ## Install LMM Tools and PLINK2
 
@@ -94,6 +94,14 @@ When finished, deactivate the conda environment:
 ```
 conda deactivate
 ```
+
+### Plots and Correlations
+
+The Rscript plots_and_cor.R will take in all tool outputs to produce beta correlations and manhattan plots. Assumes all GWAS file names have the tool and either qt or cc in the file names, ie 'bolt_qt.txt'
+```
+Rscript plots_and_cor.R --plink_files <plink qt>,<plink cc> --tool_files <the other six filenames comma separated>
+```
+This will output a series of png files. R2 correlations are contained in pairwise beta plot titles.
 
 ______________________________________________________________
 *Note: The rest of this README details the scripts and full-scale data used to benchmark the tools in this project, as well as notes on tool use. Includes hardcoded paths, as many files are too big to store on github.*
