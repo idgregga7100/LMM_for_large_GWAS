@@ -25,7 +25,7 @@ The test script can be used for either categorical or continous phenotypes with 
 
 Command to run with provided test data using nohup:
 ```
-nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_PLINK2_test.out &
+nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_plink_cc -t 2 > nohup_PLINK2_test.out &
 ```
 A more generalized command (update with user-specific parameters):
 ```
@@ -38,7 +38,7 @@ The test script can be used for either categorical or continuous phenotypes. BOL
 
 Command to run with provided test data using nohup:
 ```
-nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_BOLT_test.out &
+nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_bolt_cc -t 2 > nohup_BOLT_test.out &
 ```
 A more generalized command (update with user-specific parameters):
 ```
@@ -51,7 +51,7 @@ SAIGE also requires that phenotype files have a header row with the first two co
 
 For the binary test data (~4.5 min real time):
 ```
-nohup bash run_SAIGE_binary_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -s IID -o 100simu-genos_cc -t 2 > nohup_SAIGE_binary_test.out &
+nohup bash run_SAIGE_binary_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -s IID -o 100simu-genos_saige_cc -t 2 > nohup_SAIGE_binary_test.out &
 ```
 A generalized command for binary phenotypes:
 ```
@@ -59,7 +59,7 @@ nohup bash run_SAIGE_binary_test.sh -i <path/prefix of bed-bim-fam> -p <phenotyp
 ```
 For the continous test data (~3 min real time):
 ```
-nohup bash run_SAIGE_cont_test.sh -i 100simu-genos -p simu_continous.phen -c TRAIT -s IID -o 100simu-genos_qt -t 2 > nohup_SAIGE_cont_test.out &
+nohup bash run_SAIGE_cont_test.sh -i 100simu-genos -p simu_continous.phen -c TRAIT -s IID -o 100simu-genos_saige_qt -t 2 > nohup_SAIGE_cont_test.out &
 ```
 And a generalized command for continous phenotypes:
 ```
@@ -76,7 +76,7 @@ REGENIE accepts phenotype file containing a header row. For binary traits, it ha
 
 Running REGENIE with the included n=100 test dataset generates an error (errors out analyzing a SNP on chromosome 1 that has 0 variance), but it does work with the n=1250 and larger subsets from the benchmark analysis. (It takes >10 Gb of memory at times while running!) Command to run for binary phenotype, n=1250 subset on class server (~30 min real time):
 ```
-nohup bash run_REGENIE_binary_test.sh -i /home/igregga/LMM_files/1250simu-genos -p <phenotype file> -o 1250simu-genos_cc -t 2 > nohup_REGENIE_binary_test.out &
+nohup bash run_REGENIE_binary_test.sh -i /home/igregga/LMM_files/1250simu-genos -p <phenotype file> -o 1250simu-genos_regenie_cc -t 2 > nohup_REGENIE_binary_test.out &
 ```
 Generalized command for binary:
 ```
@@ -84,7 +84,7 @@ nohup bash run_REGENIE_binary_test.sh -i <path/prefix of bed-bim-fam> -p simu_ca
 ```
 Command to run for continous phenotype, n=1250 subset on class server:
 ```
-nohup bash run_REGENIE_cont_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_continous.phen -o 1250simu-genos_qt -t 2 > nohup_REGENIE_cont_test.out &
+nohup bash run_REGENIE_cont_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_continous.phen -o 1250simu-genos_regenie_qt -t 2 > nohup_REGENIE_cont_test.out &
 ```
 Generalized command for continous (~64 min real time):
 ```
