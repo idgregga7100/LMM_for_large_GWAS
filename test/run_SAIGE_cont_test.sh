@@ -5,13 +5,13 @@
 #####
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# to run: nohup bash run_SAIGE_cont_test.sh > nohup_SAIGE_cont_test.out &
+# to run: nohup bash run_SAIGE_cont_test.sh -i 100simu-genos -p simu_continous.phen -c TRAIT -s IID -o 100simu-genos_qt -t 2 > nohup_SAIGE_cont_test.out &
 
 while :
 do
     case "$1" in
       -i | --plink_input_prefix)
-	        input_prefix_prefix=$2
+	        input_prefix=$2
 	        shift 2
 	        ;;
       -p | --pheno_file)
@@ -51,7 +51,7 @@ done
 #name of column in pheno file containing sample ids (passed to --sampleIDColinphenoFile)
 #sample_col=IID
 #prefix for output file name (passed within --outputPrefix)
-#out_prefix=100simu-genos
+#out_prefix=100simu-genos_qt
 #number of threads to use (passed to --threads)
 #threads=2
 
