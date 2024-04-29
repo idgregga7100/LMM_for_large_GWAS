@@ -43,9 +43,11 @@ Header added to pheno files using cat on the command line. Case/control coding c
 ```
 ## Running Test Scripts with Test Data
 
-The directory `test` includes generalized scripts and small data files to test functionality. All test scripts should be run from within the `test` directory.
+The directory `test` includes generalized scripts and small data files (a simulated subset, n=100 individuals) to test functionality. All test scripts should be run from within the `test` directory.
 
 ### PLINK2 (baseline)
+
+The test script can be used for either categorical or continous phenotypes with no adjustment needed.
 
 Command to run with provided test data using nohup:
 ```
@@ -58,7 +60,7 @@ nohup bash run_PLINK2_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file
 
 ### BOLT-LMM
 
-The test script can be used for either categorical or continuous phenotypes with no adjustment needed. BOLT requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1.
+The test script can be used for either categorical or continuous phenotypes. BOLT requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1.
 
 Command to run with provided test data using nohup:
 ```
@@ -68,9 +70,29 @@ A more generalized command (update with user-specific parameters):
 ```
 nohup bash run_BOLT_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c <pheno column name> -o <output prefix> -t <threads> > nohup_BOLT_test.out &
 ```
-### REGENIE
 
 ### SAIGE
+
+SAIGE also requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1. Different flags are used for binary versus continous, so there are two test scripts.
+
+For the binary test data (~4.5 min real time):
+```
+nohup bash run_SAIGE_binary_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -s IID -o 100simu-genos_cc -t 2 > nohup_SAIGE_binary_test.out &
+```
+A generalized command for binary phenotypes:
+```
+nohup bash run_SAIGE_binary_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c <pheno column name> -s <sample id column name in pheno file> -o <output prefix> -t <threads> > nohup_SAIGE_binary_test.out &
+```
+For the continous test data (~3 min real time):
+```
+nohup bash run_SAIGE_cont_test.sh -i 100simu-genos -p simu_continous.phen -c TRAIT -s IID -o 100simu-genos_qt -t 2 > nohup_SAIGE_cont_test.out &
+```
+And a generalized command for continous phenotypes:
+```
+nohup bash run_SAIGE_cont_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -c pheno column name> -s <sample id column name in pheno file> -o 1<output prefix> -t <threads> > nohup_SAIGE_cont_test.out &
+```
+
+### REGENIE
 
 ## Benchmark Runs
 
@@ -106,6 +128,7 @@ Location of results files:
 /home/tfischer1/LMM_for_large_GWAS/nohup_BOLT.out 
 ```
 Notes on this run:
+* No covariates provided.
 * BOLT requires reference LD scores to calibrate its BOLT-LMM statistic. Used the included LD score table for a European population, which is of course not ideal for an admixed population.
 * Default is to allow a maximum of 1 million SNPs for the model, but our data includes >1.6 million. Changed to `--maxModelSnps=2000000` at the expense of computation and potential poor convergence.
 * The tool really wants genetic coordinates to prevent proximal contamination. Our .bim files don't contain coordinates (have 0s in column 3). Reference genetic maps are available in the tool, but need the build (e.g. hg17, hg18, hg38). What build is our data? Could then use `--geneticMapFile flag`, without which the program gives a warning.
@@ -136,7 +159,10 @@ Location of results files:
 /home/tfischer1/LMM_for_large_GWAS/nohup_SAIGE.out  
 ```
 Notes on this run:
-
+* No covariates provided.
+* Runs in two steps, with more required flags that the other tools.
+* Manual highly recommends running for 1 chromosome at a time using parameters `--LOCO=TRUE` with `--CHROM` specified (genotype/dosage file contain only 1 chrom) to avoid proximal contamination. Did not use, and went ahead with all at once.
+* Did go with the recommendation to use Firth's Bias-Reduced Logistic Regression for more accurate effect sizes (binary only). Used `--is_Firth_beta=TRUE` and `--pCutoffforFirth=0.05` so markers with p-value < cutoff are estimated through Firth's.
 
 ### SUGEN
 
