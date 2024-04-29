@@ -4,7 +4,7 @@
 #####
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# Command to run script: nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_PLINK2_test.out &
+# Command to run script: nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_plink_cc -t 2 > nohup_PLINK2_test.out &
 
 while :
 do
@@ -44,7 +44,7 @@ done
 # name of column in pheno file containing the phenotype (passed to --pheno-name)
 #PHENO_COL=TRAIT
 #prefix for output file name (passed to --out with directory name)
-#OUTPUT_PREFIX=100simu-genos_cc
+#OUTPUT_PREFIX=100simu-genos_plink_cc
 #number of threads to use
 #THREADS=2
 
