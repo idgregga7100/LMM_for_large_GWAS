@@ -43,13 +43,13 @@ Header added to pheno files using cat on the command line. Case/control coding c
 ```
 ## Running Test Scripts with Test Data
 
-The directory `test` includes generalized scripts and small data files to test functionality. All scripts should be run from within the `test` directory.
+The directory `test` includes generalized scripts and small data files to test functionality. All test scripts should be run from within the `test` directory.
 
 ### PLINK2 (baseline)
 
 ### BOLT-LMM
 
-BOLT requires that categorical phenotypes are coded control=0 and case=1, but otherwise script can be used for categorical or continuous phenotypes with no adjustment needed.
+The test script can be used for either categorical or continuous phenotypes with no adjustment needed. BOLT requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1.
 
 Command to run with provided test data using nohup:
 ```
@@ -97,7 +97,9 @@ Location of results files:
 /home/tfischer1/LMM_for_large_GWAS/nohup_BOLT.out 
 ```
 Notes on this run:
-
+* BOLT requires reference LD scores to calibrate its BOLT-LMM statistic. Used the included LD score table for a European population, which is of course not ideal for an admixed population.
+* Default is to allow a maximum of 1 million SNPs for the model, but our data includes >1.6 million. Changed to `--maxModelSnps=2000000` at the expense of computation and potential poor convergence.
+* The tool really wants genetic coordinates to prevent proximal contamination. Our .bim files don't contain coordinates (have 0s in column 3). Reference genetic maps are available in the tool, but need the build (e.g. hg17, hg18, hg38). What build is our data? Could then use `--geneticMapFile flag`, without which the program gives a warning.
 
 ### SAIGE
 
