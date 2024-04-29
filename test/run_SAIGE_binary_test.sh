@@ -5,7 +5,7 @@
 #####
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# to run: nohup bash run_SAIGE_binary_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -s IID -o 100simu-genos_cc -t 2 > nohup_SAIGE_binary_test.out &
+# to run: nohup bash run_SAIGE_binary_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -s IID -o 100simu-genos_saige_cc -t 2 > nohup_SAIGE_binary_test.out &
 
 # needs binary traits to be 0 and 1!!
 
@@ -53,7 +53,7 @@ done
 #name of column in pheno file containing sample ids (passed to --sampleIDColinphenoFile)
 #sample_col=IID
 #prefix for output file name (passed within --outputPrefix)
-#out_prefix=100simu-genos_cc
+#out_prefix=100simu-genos_saige_cc
 #number of threads to use (passed to --threads)
 #threads=2
 
