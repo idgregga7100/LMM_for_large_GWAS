@@ -4,7 +4,7 @@
 #####
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# Command to run script: nohup bash run_PLINK2_test.sh > nohup_PLINK2_test.out &
+# Command to run script: nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_PLINK2_test.out &
 
 while :
 do
@@ -48,7 +48,7 @@ done
 #number of threads to use
 #THREADS=2
 
-# no need to specify cc or qt, runs the same for both!
+# no need to specify cc or qt, runs with the same parameters for both
 
 # Set to log steps as they run for troubleshooting
 set -x

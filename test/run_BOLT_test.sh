@@ -5,7 +5,7 @@
 #####
 
 # Run from directory 'test' in main LMM_for_large_GWAS directory!
-# to run: nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc_bolt -t 2 > nohup_BOLT_test.out &
+# to run: nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_cc -t 2 > nohup_BOLT_test.out &
 
 while :
 do
@@ -45,11 +45,11 @@ done
 #name of column in pheno file containing the phenotype (passed to --phenoCol)
 #pheno_col=TRAIT
 #prefix for output file name, will be <prefix>.tab (passed to --statsFile with directory)
-#out_prefix=100simu-genos_cc_bolt
+#out_prefix=100simu-genos_cc
 #number of threads to use (passed to --numThreads)
 #threads=2
 
-# no need to specify cc or qt, runs the same for both!
+# no need to specify cc or qt, runs with the same parameters for both!
 
 # Set to log steps as they run for troubleshooting
 set -x
