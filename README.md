@@ -227,10 +227,15 @@ The command to run the plink2 script is:
 ```
 nohup bash run_PLINK2.sh > PLINK2.out &
 ```
-Location of results files, including the log file, can all be found in the same directory: `/home/wprice2/gwas_results`.
+The location of results files, including the log file, can all be found in the same directory: `/home/wprice2/gwas_results`.
 
 Notes on this run:
-
+* No covariates provided
+* Script assumes phenotype and genotype files are correctly formatted
+* Script specifies using two threads for analysis
+* No explicit error handling is included in this script other than the creation of an output directory
+* Two loops used to perform categorical and continuous GWAS
+* Extremely straightforward execution with no hiccups
 
 ## Analysis
 
