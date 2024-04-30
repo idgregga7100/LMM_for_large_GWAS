@@ -94,6 +94,7 @@ When finished, deactivate the conda environment:
 ```
 conda deactivate
 ```
+Documentation FAQ does address the low variance error; could be addressed by filtering out low MAC variants before running step 1. There is an MAC filter flag included, but only for REGENIE step 2, so it doesn't help this specific situaion.
 
 ### Plots and Correlations
 
@@ -206,6 +207,11 @@ Notes on this run:
 
 SUGEN has a weird error. See wiki page.
 
+If it HAD worked:
+* No covariates provided.
+* Requires user to type out full regression formula as one of the arguments, eg trait=age+sex+pc1+pc2...
+* May need more specific pheno file formatting that wasn't explained well enough in the documentation, or more specifically formatted regression formula, based on the error message. ???
+
 ### REGENIE
 
 REGENIE like SAIGE also takes two steps, both wrapped in run_REGENIE.sh and run_REGENIE-binary.sh (one for continuous pheno, one categorical/binary pheno). Run with:
@@ -213,12 +219,15 @@ REGENIE like SAIGE also takes two steps, both wrapped in run_REGENIE.sh and run_
 nohup /home/igregga/LMM_for_large_GWAS/run_REGENIE.sh > /home/igregga/regenie-out/regeniecont.log &
 nohup /home/igregga/LMM_for_large_GWAS/run_REGENIE-binary.sh > /home/igregga/regenie-out/regeniecat.log &
 ```
-Tool generates multiple log files for each run, and prints much of this info to command line (so it's a very long nohup log). The actual results are:
+Tool generates multiple log files for each run, and prints much of this info to command line (so it's a very long nohup log, and this isn't even using the --verbose flag). The actual results are:
 ```
 /home/igregga/regenie-out/*.regenie
 ```
 Notes on this run:
-
+* No covariates provided.
+* Runs in two steps. Longest and most taxing part of the process is step one (calculating GRM). Recommended 1 mil SNPs or less, like BOLT. Try LD pruning in the future?
+* If not using the optional --lowmem flag, it takes so much memory that it almost made the class server unusable.
+* Additional options like Firth available and recommended, similar to SAIGE. Did not use these for this run.
 
 ### PLINK2 (baseline)
 The script to run PLINK2, `run_PLINK2.sh`, completes a GWAS for the continuous trait for each subset and then the categorical. 
