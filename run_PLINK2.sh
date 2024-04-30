@@ -1,45 +1,48 @@
 #!/bin/bash
 #####
-# Script to run plink2
+# This script is meant to run a GWAS using plink2
+# for both continuous and categorial traits across different subsets of data
+# and benchmark the performance of each run
 #####
 
 # Define path to plink2 executable
 PLINK2_EXEC="/home/wprice2/plink2"
 # Directory with input files
 INPUT_DIR="/home/igregga/LMM_files"
-# Phenotype file
+# Define the path to the cont. phenotype file
 CONT_PHENO_FILE="${INPUT_DIR}/phenos/simu_continuous.phen"
-# Categorical phenotype file
+# Define the path to the cat. phenotype file
 CAT_PHENO_FILE="${INPUT_DIR}/phenos/simu_categorical.phen"
 
-# Output files
+# Specify the directory to store output files from the GWAS analyses
 OUTPUT_DIR="/home/wprice2/gwas_results"
 
-# Make sure output directory exists
+# Make sure output directory exists, and create one if it does not
 mkdir -p $OUTPUT_DIR
 
 # Make an array of our subset prefixes
 declare -a subsets=("1250" "2500" "5000")
 
-# Loop through subsets
+# Loop through subsets for the continuous trait analysis
 for f in "${subsets[@]}"
 do  
-    # Full path to the input file set
+    # Define the path to the input genotype files for this subset
     INPUT_PREFIX="${INPUT_DIR}/${f}simu-genos"  
+    #Define the output file prefix for this subset
     OUTPUT_PREFIX="${OUTPUT_DIR}/${f}continuous"
 
-    # Run GWAS with plink2, including time and memory benchmarking
+    # Execute plink2 for GWAS, including timing and memory usage stats
     /usr/bin/time --verbose $PLINK2_EXEC --bfile "${INPUT_PREFIX}" \
     --pheno "${CONT_PHENO_FILE}" \
     --pheno-name TRAIT \
     --glm omit-ref allow-no-covars \
     --out "${OUTPUT_PREFIX}" \
     --threads 2
-
+    #Log the completion of the analysis
     echo "PLINK2 GWAS analysis for continuous trait subset ${f} is complete."
 done
 
-#For categorical traits
+#Repeat categorical traits
 for f in "${subsets[@]}"
 do
     # Full path to the input file set
