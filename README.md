@@ -1,5 +1,5 @@
 # LMM_for_large_GWAS
-COMP383/483 project
+In this COMP383/483 project, we assessed the four LMM GWAS software tools BOLT-LMM, REGENIE, SAIGE, and SUGEN and compared them to a standard GWAS tool, PLINK2.
 
 ## General Dependencies (Install If Needed)
 To run the included scripts, users need to have the following programs (and packages) installed:
@@ -21,9 +21,9 @@ The directory `test` includes generalized scripts and small data files (a simula
 
 ### PLINK2 (baseline)
 
-The test script can be used for either categorical or continous phenotypes with no adjustment needed.
+The test script can be used for either categorical or continous phenotypes.
 
-Command to run with provided test data using nohup:
+Command to run with provided test data using nohup (for categorical phenotype):
 ```
 nohup bash run_PLINK2_test.sh -i 100simu-genos -p simu_categorical.phen -c TRAIT -o 100simu-genos_plink_cc -t 2 > nohup_PLINK2_test.out &
 ```
@@ -36,7 +36,7 @@ nohup bash run_PLINK2_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file
 
 The test script can be used for either categorical or continuous phenotypes. BOLT requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1.
 
-Command to run with provided test data using nohup:
+Command to run with provided test data using nohup (for continuous phenotype):
 ```
 nohup bash run_BOLT_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -o 100simu-genos_bolt_cc -t 2 > nohup_BOLT_test.out &
 ```
@@ -49,7 +49,7 @@ nohup bash run_BOLT_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> 
 
 SAIGE also requires that phenotype files have a header row with the first two columns labeled FID and IID, and that categorical phenotypes are coded control=0 and case=1. Different flags are used for binary versus continous, so there are two test scripts.
 
-For the binary test data (~4.5 min real time):
+For the binary test data (~4.5 min real run time):
 ```
 nohup bash run_SAIGE_binary_test.sh -i 100simu-genos -p simu_categorical-01na.phen -c TRAIT -s IID -o 100simu-genos_saige_cc -t 2 > nohup_SAIGE_binary_test.out &
 ```
@@ -72,15 +72,15 @@ Since REGENIE is installed within a conda environment, activate the environment 
 ```
 conda activate regenie_env
 ```
-REGENIE accepts phenotype file containing a header row. For binary traits, it has the option to accept 1/2 instead of 0/1 for control/case, but script currently set to accept 0/1.
+REGENIE accepts phenotype files containing a header row. For binary traits, it has the option to accept 1/2 instead of 0/1 for control/case, but script currently set to accept 0/1.
 
 Running REGENIE with the included n=100 test dataset generates an error (errors out analyzing a SNP on chromosome 1 that has 0 variance), but it does work with the n=1250 and larger subsets from the benchmark analysis. (It takes >10 Gb of memory at times while running!) Command to run for binary phenotype, n=1250 subset on class server (~30 min real time):
 ```
-nohup bash run_REGENIE_binary_test.sh -i /home/igregga/LMM_files/1250simu-genos -p <phenotype file> -o 1250simu-genos_regenie_cc -t 2 > nohup_REGENIE_binary_test.out &
+nohup bash run_REGENIE_binary_test.sh -i /home/igregga/LMM_files/1250simu-genos -p simu_categorical-01na.phen -o 1250simu-genos_regenie_cc -t 2 > nohup_REGENIE_binary_test.out &
 ```
 Generalized command for binary:
 ```
-nohup bash run_REGENIE_binary_test.sh -i <path/prefix of bed-bim-fam> -p simu_categorical-01na.phen -o <output prefix> -t <threads> > nohup_REGENIE_binary_test.out &
+nohup bash run_REGENIE_binary_test.sh -i <path/prefix of bed-bim-fam> -p <phenotype file> -o <output prefix> -t <threads> > nohup_REGENIE_binary_test.out &
 ```
 Command to run for continous phenotype, n=1250 subset on class server:
 ```
